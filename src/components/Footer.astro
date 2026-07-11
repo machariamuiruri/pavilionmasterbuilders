@@ -1,0 +1,50 @@
+---
+import { offices, email } from '../data/site.js';
+const year = new Date().getFullYear();
+// First two offices sit in the "Our Offices" column, the rest under "Get In Touch"
+const primary = offices.slice(0, 2);
+const secondary = offices.slice(2);
+---
+<footer>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>About PMB</h3>
+      <p>Pavilion Master Builders is East Africa's premier sustainable construction provider. Quality. Innovation. Excellence. Every project, every time.</p>
+      <div class="social-links">
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3>Our Offices</h3>
+      {primary.map((o, i) => (
+        <p style={i > 0 ? 'margin-top: 0.9rem;' : undefined}>
+          <strong>{o.short}</strong><br />{o.address}<br />
+          {o.phones.map((p, pi) => (
+            <>{pi > 0 && ' / '}<a href={`tel:${p.tel}`}>{p.label}</a></>
+          ))}
+        </p>
+      ))}
+    </div>
+
+    <div class="footer-section">
+      <h3>Get In Touch</h3>
+      <p><a href={`mailto:${email}`}>{email}</a></p>
+      {secondary.map((o) => (
+        <p style="margin-top: 0.9rem;">
+          <strong>{o.short}</strong><br />{o.address}<br />
+          {o.phones.map((p, pi) => (
+            <>{pi > 0 && ' / '}<a href={`tel:${p.tel}`}>{p.label}</a></>
+          ))}
+        </p>
+      ))}
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {year} Pavilion Master Builders Limited. Sustainable Building Solutions for East Africa. All Rights Reserved.</p>
+  </div>
+</footer>

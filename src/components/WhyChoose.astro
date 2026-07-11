@@ -1,0 +1,21 @@
+---
+import { whyChoose } from '../data/site.js';
+---
+<section class="why-choose">
+  <div class="why-container">
+    <div class="section-header">
+      <h2>Why Choose Pavilion?</h2>
+      <p>Trusted by thousands across East Africa for excellence and innovation</p>
+    </div>
+
+    <div class="why-grid">
+      {whyChoose.map((w) => (
+        <div class="why-card">
+          <div class="why-icon">{w.icon}</div>
+          <h3>{w.title}</h3>
+          <p>{w.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

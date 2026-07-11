@@ -1,83 +1,79 @@
-# Pavilion Master Builders — Website
+# Pavilion Master Builders — Website (Astro)
 
-Marketing website for **Pavilion Master Builders Limited**, a Kenyan construction-materials company offering sustainable building solutions across East Africa.
+Marketing website for **Pavilion Master Builders Limited**, rebuilt with [Astro](https://astro.build/).
+It ships as a **fully static site** (plain HTML/CSS/JS in `dist/`) — same performance and
+zero-cost hosting as the original single-file version, but componentised and content-driven
+so it's far easier to grow and maintain.
 
-Built as a single self-contained page in **vanilla HTML, CSS and JavaScript** (no build step, no framework) with a premium glassmorphism aesthetic, and deployed on **Vercel**.
+## Why Astro (vs the old single file)
 
----
+- **Reusable components** — one `ProductCard`, one `Nav`, one `Footer`, instead of copy-pasted HTML.
+- **Content lives as data** — products, offices, testimonials, Mixx finishes/colours, etc. are
+  plain arrays in `src/data/`. Add a product by adding one object; you never touch markup.
+- **Offices defined once** — the Contact section and the Footer both read the same `offices`
+  list, so they can never drift out of sync.
+- **CSS and JS are separate files** — `src/styles/global.css` and `src/scripts/main.js`, which
+  Astro bundles and minifies automatically at build time.
+- Still deploys as static files anywhere (Vercel, Netlify, Cloudflare Pages, GitHub Pages).
 
-## Tech stack
+## Requirements
 
-- Vanilla HTML5 / CSS3 / JavaScript — everything lives in one HTML file
-- [Font Awesome](https://fontawesome.com/) (via CDN) for icons
-- [Web3Forms](https://web3forms.com/) for the contact form (no backend required)
-- Hosted on [Vercel](https://vercel.com/)
+- [Node.js](https://nodejs.org/) 18.14 or newer
+
+## Commands
+
+```bash
+npm install        # install dependencies (first time only)
+npm run dev        # local dev server with hot reload  ->  http://localhost:4321
+npm run build      # build the static site into dist/
+npm run preview    # preview the built dist/ locally
+```
 
 ## Project structure
 
 ```
-.
-├── pavilion_final_premium.html   # the site — HTML + CSS + JS in one file
-├── PAV.png                       # company logo (used in the nav)
-├── favicon.png                   # 48×48 browser-tab icon
-├── apple-touch-icon.png          # 180×180 mobile home-screen icon
-├── assets/                       # product imagery, organised by product line
-│   ├── roofing-decra/
-│   ├── light-gauge-steel/
-│   ├── mixx-cement/
-│   │   ├── finishes/
-│   │   ├── colour-charts/
-│   │   └── products/
-│   ├── fiber-cement/
-│   ├── upvc-gutters/
-│   ├── rust-converter/
-│   ├── alternative-building/
-│   └── reroofing-cleaning/
-├── README-DEPLOY.txt             # quick deploy + form-setup notes
-└── README.md
+pavilion-astro/
+├── public/                    # served as-is at the site root
+│   ├── PAV.png                # logo
+│   ├── favicon.png · apple-touch-icon.png
+│   └── assets/                # product imagery (roofing, mixx, gutters, …)
+├── src/
+│   ├── data/                  # ← EDIT CONTENT HERE (no HTML needed)
+│   │   ├── products.js        #   the 8 solution cards
+│   │   ├── mixx.js            #   Mixx finishes, colour charts, sealers, applications
+│   │   └── site.js           #   offices, nav, stats, projects, testimonials, why-choose
+│   ├── components/            # one file per UI piece (Nav, Hero, ProductCard, Mixx, …)
+│   ├── layouts/BaseLayout.astro
+│   ├── styles/global.css      # all styles (bundled + minified on build)
+│   ├── scripts/main.js        # hamburger menu, colour-chart tabs, contact form
+│   └── pages/index.astro      # the home page — assembles the sections
+├── astro.config.mjs
+└── package.json
 ```
 
-## Page sections
+## Editing content (the common tasks)
 
-Hero · Stats · **Solutions** (Decra Roofing, Light Gauge Steel, Mixx Cement, Fiber Cement, UPVC Gutters, Rust Converter, Alternative Building, Re-roofing & Cleaning) · **Mixx Cement** deep-dive (finishes, colour charts, sealers, application guide) · Projects · Testimonials · Why Choose · **Contact** (enquiry form + four offices) · Footer.
+- **Add / edit a product** → edit `src/data/products.js` (one object per card).
+- **Add / edit a product _page_** → edit `src/data/productDetails.js`. Each product has its own
+  page at `/products/<slug>`, generated from that file by `src/pages/products/[slug].astro`.
+  Add a `slug` entry (with `sections`) and a matching card in `products.js` — no new files needed.
+- **Change an office or phone number** → edit `offices` in `src/data/site.js` (updates Contact + Footer).
+- **Add a Mixx colour / finish / sealer** → edit `src/data/mixx.js`.
+- **Swap a photo** → drop the file in `public/assets/…` and point the data entry at it.
+- **Add a whole new page** → create `src/pages/about.astro` using `BaseLayout`; it's live at `/about`.
 
-## Running locally
+## Contact form (Web3Forms)
 
-Because image paths are relative, serve the folder over HTTP rather than opening the file directly:
+The enquiry form posts to [Web3Forms](https://web3forms.com/) — free, no backend.
 
-```bash
-# from the project root
-python3 -m http.server 8000
-# then visit http://localhost:8000/pavilion_final_premium.html
-```
+1. Get a key at web3forms.com (enter `info@pavilionmasterbuilders.com`).
+2. Copy `.env.example` to `.env` and set `PUBLIC_WEB3FORMS_KEY=your-key`.
+3. Rebuild / redeploy. (Without a key the form still renders; it just won't deliver.)
 
 ## Deployment (Vercel)
 
-1. Push this repo to GitHub.
-2. In Vercel, **Add New → Project** and import the repo. Framework preset: **Other** (it's a static site — no build command, output directory is the root).
-3. Every push to the main branch triggers an automatic redeploy.
-
-> **Tip:** to serve the site at the clean root URL (`/`) instead of `/pavilion_final_premium.html`, rename the file to `index.html`.
-
-## Contact form setup (Web3Forms)
-
-The enquiry form posts to Web3Forms — free, no server needed.
-
-1. Go to [web3forms.com](https://web3forms.com/) and enter `info@pavilionmasterbuilders.com`.
-2. Copy the **Access Key** they email you.
-3. In `pavilion_final_premium.html`, find `YOUR_WEB3FORMS_ACCESS_KEY` (marked with a `TODO` comment) and replace it with your key.
-
-Submissions then arrive at `info@pavilionmasterbuilders.com`. The form validates input, shows inline success/error messages, and includes a honeypot for spam protection.
-
-## Editing content
-
-- **Product images** live in `assets/<product-line>/`. Swap a file (keep the same name) or update the `src` in the HTML.
-- **Offices / phone numbers** are in the Contact section and the footer.
-- **Colours** are CSS variables in the `:root` block near the top of the `<style>` (navy `--primary`, gold `--accent`, green `--success`).
-
-## Offices
-
-K-Mall (Off Kangundo Rd, Nairobi) · Karen (Dari Business Park) · Eldoret (Rupa Business Center) · Kisumu (Swan Center)
+Import the repo in Vercel — it auto-detects Astro (build: `astro build`, output: `dist/`).
+Add the `PUBLIC_WEB3FORMS_KEY` environment variable in the Vercel dashboard. Push to deploy.
 
 ---
 
