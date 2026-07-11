@@ -1,0 +1,62 @@
+---
+import { offices, email, services } from '../data/site.js';
+// Set PUBLIC_WEB3FORMS_KEY in a .env file (see .env.example) to activate delivery.
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY';
+---
+<section class="contact" id="contact">
+  <div class="section-header">
+    <h2>Let's Build Together</h2>
+    <p>Tell us about your project and our team will respond with expert guidance and a free quote</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-form-wrap">
+      <h3>Request a Free Quote</h3>
+      <p>Fill in the form and we'll get back to you within one business day.</p>
+      <form id="pmb-contact-form">
+        <input type="hidden" name="access_key" value={accessKey} />
+        <input type="hidden" name="subject" value="New enquiry from Pavilion Master Builders website" />
+        <input type="hidden" name="from_name" value="Pavilion Master Builders Website" />
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" />
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf-name">Full Name</label>
+            <input id="cf-name" type="text" name="name" required placeholder="Your name" />
+          </div>
+          <div class="form-field">
+            <label for="cf-phone">Phone</label>
+            <input id="cf-phone" type="tel" name="phone" required placeholder="07xx xxx xxx" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" type="email" name="email" required placeholder="you@example.com" />
+        </div>
+        <div class="form-field">
+          <label for="cf-service">Product / Service of Interest</label>
+          <select id="cf-service" name="service">
+            {services.map((s) => <option>{s}</option>)}
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button type="submit" id="form-submit" class="form-submit">Send Enquiry</button>
+        <div id="form-status" class="form-status"></div>
+      </form>
+    </div>
+    <div class="offices-panel">
+      <h3>Visit Our Offices</h3>
+      {offices.map((o) => (
+        <div class="office-card">
+          <h4>{o.name}</h4>
+          <p>{o.address}</p>
+          {o.phones.map((p, pi) => (
+            <>{pi > 0 && ' / '}<a href={`tel:${p.tel}`}>{p.label}</a></>
+          ))}
+        </div>
+      ))}
+      <div class="contact-email-row">Prefer email? <a href={`mailto:${email}`}>{email}</a></div>
+    </div>
+  </div>
+</section>

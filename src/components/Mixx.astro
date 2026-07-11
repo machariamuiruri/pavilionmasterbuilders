@@ -1,0 +1,64 @@
+---
+import { finishes, colourCharts, sealers, applications, mixxBadges } from '../data/mixx.js';
+---
+<section class="mixx" id="mixx">
+  <div class="mixx-intro">
+    <span class="mixx-eyebrow">Mixx &middot; Cement with Style</span>
+    <div class="section-header" style="margin-bottom:0;">
+      <h2>Decorative Micro-Cement</h2>
+    </div>
+    <p>Mixx delivers the look of Venetian plaster &mdash; the complicated, expensive, high-skill finish &mdash; with a low-cost, easy-to-apply product. Two coats, a sealer, and you're done. Water-based, non-hazardous and designed for Africa.</p>
+    <div class="mixx-badges">
+      {mixxBadges.map((b) => <span class="mixx-badge" set:html={b}></span>)}
+    </div>
+  </div>
+
+  <div class="finishes-grid">
+    {finishes.map((f) => (
+      <div class="finish-card">
+        <div class="finish-photo"><img src={f.img} alt={f.alt} loading="lazy" /></div>
+        <div class="finish-body">
+          <h3>{f.title}</h3>
+          <div class="finish-sub">{f.sub}</div>
+          <p>{f.desc}</p>
+          <div class="finish-spec" set:html={f.spec}></div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h3 class="mixx-subhead">Designer Colour Range</h3>
+  <div class="chart-tabs">
+    {colourCharts.map((c, i) => (
+      <button class={`chart-tab${i === 0 ? ' active' : ''}`} data-chart={c.id}>{c.label}</button>
+    ))}
+  </div>
+  {colourCharts.map((c, i) => (
+    <div class={`chart-panel${i === 0 ? ' active' : ''}`} id={`chart-${c.id}`}>
+      <img src={c.img} alt={c.alt} loading="lazy" />
+    </div>
+  ))}
+
+  <h3 class="mixx-subhead">The Sealers</h3>
+  <div class="sealers-grid">
+    {sealers.map((s) => (
+      <div class="sealer-card">
+        <div class="sealer-photo"><img src={s.img} alt={s.alt} loading="lazy" /></div>
+        <h4>{s.title}</h4>
+        <p>{s.use}</p>
+      </div>
+    ))}
+  </div>
+
+  <h3 class="mixx-subhead">Application Guide</h3>
+  <div class="applications-wrap">
+    <table class="applications-table">
+      <thead><tr><th>Application</th><th>Plaster</th><th>Coats</th><th>Sealer</th></tr></thead>
+      <tbody>
+        {applications.map((a) => (
+          <tr><td>{a.area}</td><td>{a.plaster}</td><td>{a.coats}</td><td>{a.sealer}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>

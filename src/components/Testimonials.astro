@@ -1,0 +1,25 @@
+---
+import { testimonials } from '../data/site.js';
+---
+<section class="testimonials">
+  <div class="section-header">
+    <h2>Client Testimonials</h2>
+    <p>Real feedback from satisfied clients across East Africa</p>
+  </div>
+
+  <div class="testimonials-carousel">
+    {testimonials.map((t) => (
+      <div class="testimonial-card">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p class="testimonial-text">"{t.text}"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">{t.initials}</div>
+          <div class="author-info">
+            <h4>{t.name}</h4>
+            <p>{t.role}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductSection from '../../components/ProductSection.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { productDetails, productOrder } from '../../data/productDetails.js';
+import { products } from '../../data/products.js';
+
+export function getStaticPaths() {
+  return productOrder.map((slug) => ({
+    params: { slug },
+    props: { product: productDetails[slug] },
+  }));
+}
+
+const { product } = Astro.props;
+// "Explore other solutions" — the other product cards
+const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
+---
+<BaseLayout title={`${product.title} — Pavilion Master Builders`} description={product.tagline}>
+  <!-- Product hero -->
+  <section class="product-hero" style={`background-image: linear-gradient(135deg, rgba(26,38,52,0.86), rgba(45,90,61,0.78)), url('${product.heroImage}');`}>
+    <div class="product-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><a href="/#products">Solutions</a><span>/</span><span>{product.title}</span>
+      </nav>
+      <span class="product-hero-tag">{product.tag}</span>
+      <h1>{product.title}</h1>
+      <p class="product-hero-tagline">{product.tagline}</p>
+      <div class="product-hero-ctas">
+        <a class="btn-primary" href="/#contact">Request a Quote</a>
+        <a class="btn-secondary" href="/#products">All Solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro + highlights -->
+  <section class="product-intro">
+    <div class="product-intro-inner">
+      <p class="product-intro-text">{product.intro}</p>
+      <div class="highlight-grid">
+        {product.highlights.map((h) => (
+          <div class="highlight-card">
+            <div class="highlight-icon">{h.icon}</div>
+            <h3>{h.title}</h3>
+            <p>{h.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content sections -->
+  {product.sections.map((block, i) => <ProductSection block={block} alt={i % 2 === 1} />)}
+
+  <!-- CTA -->
+  <section class="final-cta">
+    <h2>Interested in {product.title}?</h2>
+    <p>Get expert guidance and a comprehensive free quote from our team today.</p>
+    <a class="btn-primary" href="/#contact">Request a Quote</a>
+  </section>
+
+  <!-- Explore other solutions -->
+  <section class="related">
+    <div class="section-header">
+      <h2>Explore Other Solutions</h2>
+      <p>Discover more of what Pavilion Master Builders can deliver for your project</p>
+    </div>
+    <div class="products-grid">
+      {others.map((p) => <ProductCard {...p} />)}
+    </div>
+  </section>
+</BaseLayout>

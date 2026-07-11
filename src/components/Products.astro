@@ -1,0 +1,13 @@
+---
+import { products } from '../data/products.js';
+import ProductCard from './ProductCard.astro';
+---
+<section class="products" id="products">
+  <div class="section-header">
+    <h2>Expert Construction Solutions</h2>
+    <p>From roofing to decorative finishes — a complete range of sustainable building products and services</p>
+  </div>
+  <div class="products-grid">
+    {products.map((p) => <ProductCard {...p} />)}
+  </div>
+</section>

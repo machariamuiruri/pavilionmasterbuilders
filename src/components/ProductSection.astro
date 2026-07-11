@@ -1,0 +1,100 @@
+---
+// Renders one content block of a product page based on its `type`.
+const { block, alt = false } = Astro.props;
+---
+{block.type === 'feature-grid' && (
+  <section class={`pblock${alt ? ' alt' : ''}`}>
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>{block.heading}</h2>
+        {block.intro && <p>{block.intro}</p>}
+      </div>
+      <div class="pfeature-grid">
+        {block.items.map((it) => (
+          <div class="pfeature-card">
+            {it.img
+              ? <div class="pfeature-photo"><img src={it.img} alt={it.title} loading="lazy" /></div>
+              : <div class="pfeature-icon">{it.icon}</div>}
+            <div class="pfeature-body">
+              <h3>{it.title}</h3>
+              {it.desc && <p>{it.desc}</p>}
+              {it.spec && <div class="pfeature-spec">{it.spec}</div>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{block.type === 'spec-table' && (
+  <section class={`pblock${alt ? ' alt' : ''}`}>
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>{block.heading}</h2>
+        {block.intro && <p>{block.intro}</p>}
+      </div>
+      <div class="applications-wrap">
+        <table class="applications-table spec-table">
+          <thead><tr>{block.columns.map((c) => <th>{c}</th>)}</tr></thead>
+          <tbody>
+            {block.rows.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+)}
+
+{block.type === 'colour' && (
+  <section class={`pblock${alt ? ' alt' : ''}`}>
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>{block.heading}</h2>
+        {block.intro && <p>{block.intro}</p>}
+      </div>
+      <div class={`pcolour-grid${block.images.length === 1 ? ' single' : ''}`}>
+        {block.images.map((im) => (
+          <figure class="pcolour">
+            <img src={im.src} alt={im.caption || block.heading} loading="lazy" />
+            {im.caption && <figcaption>{im.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{block.type === 'benefits' && (
+  <section class={`pblock${alt ? ' alt' : ''}`}>
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>{block.heading}</h2>
+        {block.intro && <p>{block.intro}</p>}
+      </div>
+      <ul class={`pbenefits${block.columns === 2 ? ' two-col' : ''}`}>
+        {block.items.map((it) => (
+          <li><span class="pbenefit-check">✓</span><span>{it}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+{block.type === 'gallery' && (
+  <section class={`pblock${alt ? ' alt' : ''}`}>
+    <div class="pblock-inner">
+      {block.heading && (
+        <div class="pblock-head">
+          <h2>{block.heading}</h2>
+          {block.intro && <p>{block.intro}</p>}
+        </div>
+      )}
+      <div class="pgallery">
+        {block.images.map((im) => (
+          <div class="pgallery-item"><img src={typeof im === 'string' ? im : im.src} alt={block.heading || 'Project image'} loading="lazy" /></div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

@@ -1,0 +1,17 @@
+---
+const { tag, img, alt, title, link, cta, desc, features } = Astro.props;
+---
+<div class="product-card" onclick={`location.href='${link}'`}>
+  <div class="product-image">
+    <span class="product-tag">{tag}</span>
+    <img src={img} alt={alt} loading="lazy" />
+  </div>
+  <div class="product-content">
+    <h3>{title}</h3>
+    <p>{desc}</p>
+    <ul class="product-features">
+      {features.map((f) => <li>{f}</li>)}
+    </ul>
+    <a href={link} class="learn-more">{cta} &rarr;</a>
+  </div>
+</div>

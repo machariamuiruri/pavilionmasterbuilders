@@ -1,0 +1,26 @@
+---
+import { projects } from '../data/site.js';
+---
+<section class="projects" id="projects">
+  <div class="projects-container">
+    <div class="section-header">
+      <h2>Iconic Projects</h2>
+      <p>Transforming visions into reality. See our portfolio of excellence across East Africa</p>
+    </div>
+
+    <div class="projects-carousel">
+      {projects.map((p) => (
+        <div class="project-card">
+          <div class="project-image">
+            <img src={p.img} alt={p.alt} loading="lazy" />
+          </div>
+          <div class="project-content">
+            <div class="project-category">{p.category}</div>
+            <h4 class="project-title">{p.title}</h4>
+            <p class="project-description">{p.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
