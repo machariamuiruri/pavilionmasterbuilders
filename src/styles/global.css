@@ -193,6 +193,14 @@
             width: 100%;
         }
 
+        header nav a.active {
+            color: var(--accent);
+        }
+
+        header nav a.active::after {
+            width: 100%;
+        }
+
         .nav-solutions-dropdown {
             position: relative;
             display: inline-flex;
@@ -259,6 +267,12 @@
             background: rgba(45, 90, 61, 0.08);
             color: var(--success);
             padding-left: 1.4rem;
+        }
+
+        .nav-dropdown-menu a.active {
+            background: rgba(45, 90, 61, 0.08);
+            color: var(--success);
+            font-weight: 500;
         }
 
         .nav-cta {

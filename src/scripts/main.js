@@ -59,6 +59,27 @@ document.addEventListener('DOMContentLoaded', function () {
             statNumbers.forEach(function (el) { statsObserver.observe(el); });
         }
 
+        // Nav scroll-spy: highlight whichever homepage section is currently in view
+        var navSpyLinks = document.querySelectorAll('header nav a[data-scroll-key]');
+        if (navSpyLinks.length && 'IntersectionObserver' in window) {
+            var spySections = ['home', 'products', 'projects', 'contact']
+                .map(function (id) { return document.getElementById(id); })
+                .filter(Boolean);
+            if (spySections.length) {
+                var setActiveSection = function (id) {
+                    navSpyLinks.forEach(function (a) {
+                        a.classList.toggle('active', a.dataset.scrollKey === id);
+                    });
+                };
+                var spyObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) setActiveSection(entry.target.id);
+                    });
+                }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+                spySections.forEach(function (section) { spyObserver.observe(section); });
+            }
+        }
+
         // Web3Forms contact form (AJAX submit, no page reload)
         var form = document.getElementById('pmb-contact-form');
         if (!form) return;

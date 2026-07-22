@@ -1,5 +1,8 @@
 ---
 import { navLinks } from '../data/site.js';
+const currentPath = Astro.url.pathname;
+const onProductPage = currentPath.startsWith('/products/');
+const sectionKey = (href) => href.split('#')[1] || 'home';
 ---
 <header>
   <nav>
@@ -19,13 +22,15 @@ import { navLinks } from '../data/site.js';
         {navLinks.map((link) => (
           link.dropdown ? (
             <li class="nav-solutions-dropdown">
-              <a href={link.href}>{link.label}</a>
+              <a href={link.href} data-scroll-key="products" class={onProductPage ? 'active' : ''}>{link.label}</a>
               <div class="nav-dropdown-menu">
-                {link.dropdown.map((item) => <a href={item.href}>{item.label}</a>)}
+                {link.dropdown.map((item) => (
+                  <a href={item.href} class={currentPath === item.href ? 'active' : ''}>{item.label}</a>
+                ))}
               </div>
             </li>
           ) : (
-            <li><a href={link.href}>{link.label}</a></li>
+            <li><a href={link.href} data-scroll-key={sectionKey(link.href)} class={currentPath === link.href ? 'active' : ''}>{link.label}</a></li>
           )
         ))}
       </ul>
