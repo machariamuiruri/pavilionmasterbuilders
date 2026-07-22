@@ -3,7 +3,14 @@ import { navLinks } from '../data/site.js';
 ---
 <header>
   <nav>
-    <img class="logo" src="/PAV.png" alt="Pavilion Master Builders logo" />
+    <a href="/" class="brand">
+      <img class="logo" src="/PAV.png" alt="Pavilion Master Builders logo" />
+      <span class="brand-divider"></span>
+      <span class="brand-text">
+        <span class="brand-line brand-line-1">Pavilion</span>
+        <span class="brand-line brand-line-2">Master Builders</span>
+      </span>
+    </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
       <span></span><span></span><span></span>
     </button>
