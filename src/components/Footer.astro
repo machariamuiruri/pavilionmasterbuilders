@@ -8,7 +8,14 @@ const secondary = offices.slice(2);
 <footer>
   <div class="footer-content">
     <div class="footer-section">
-      <h3>About PMB</h3>
+      <a href="/" class="brand footer-brand">
+        <img class="logo" src="/PAV.png" alt="Pavilion Master Builders logo" />
+        <span class="brand-divider"></span>
+        <span class="brand-text">
+          <span class="brand-line brand-line-1">Pavilion</span>
+          <span class="brand-line brand-line-2">Master Builders</span>
+        </span>
+      </a>
       <p>Pavilion Master Builders is East Africa's premier sustainable construction provider. Quality. Innovation. Excellence. Every project, every time.</p>
       <div class="social-links">
         <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -18,7 +25,7 @@ const secondary = offices.slice(2);
       </div>
     </div>
 
-    <div class="footer-section">
+    <div class="footer-section footer-gold">
       <h3>Our Offices</h3>
       {primary.map((o, i) => (
         <p style={i > 0 ? 'margin-top: 0.9rem;' : undefined}>
@@ -30,7 +37,7 @@ const secondary = offices.slice(2);
       ))}
     </div>
 
-    <div class="footer-section">
+    <div class="footer-section footer-gold">
       <h3>Get In Touch</h3>
       <p><a href={`mailto:${email}`}>{email}</a></p>
       {secondary.map((o) => (
