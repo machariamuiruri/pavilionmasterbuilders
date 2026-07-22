@@ -29,6 +29,36 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
+        // Animated stat counters (count up once, when scrolled into view)
+        var statNumbers = document.querySelectorAll('.stat-number');
+        if (statNumbers.length && 'IntersectionObserver' in window) {
+            var animateStat = function (el) {
+                var match = el.textContent.trim().match(/^([\d,]+)(.*)$/);
+                if (!match) return;
+                var target = parseInt(match[1].replace(/,/g, ''), 10);
+                var suffix = match[2];
+                var duration = 1600;
+                var start = null;
+                function step(timestamp) {
+                    if (start === null) start = timestamp;
+                    var progress = Math.min((timestamp - start) / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    el.textContent = Math.round(eased * target).toLocaleString() + suffix;
+                    if (progress < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            };
+            var statsObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        animateStat(entry.target);
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+            statNumbers.forEach(function (el) { statsObserver.observe(el); });
+        }
+
         // Web3Forms contact form (AJAX submit, no page reload)
         var form = document.getElementById('pmb-contact-form');
         if (!form) return;
