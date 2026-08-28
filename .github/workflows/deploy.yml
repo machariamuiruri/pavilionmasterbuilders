@@ -1,0 +1,57 @@
+name: Build and deploy to cPanel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys write to public_html at the same time.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # PUBLIC_WEB3FORMS_KEY is inlined into the HTML at build time, so it must
+      # be present here or the contact form ships dead.
+      - name: Build
+        env:
+          PUBLIC_WEB3FORMS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
+        run: npm run build
+
+      - name: Fail if the contact form key is missing
+        run: |
+          if grep -rq 'YOUR_WEB3FORMS_ACCESS_KEY' dist/; then
+            echo "::error::Built output still contains the placeholder Web3Forms key."
+            echo "Set the PUBLIC_WEB3FORMS_KEY repository secret. Refusing to deploy a dead contact form."
+            exit 1
+          fi
+
+      - name: Upload to public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # Server-side files cPanel owns. Never let a deploy touch these:
+          # .well-known holds the Let's Encrypt ACME challenge (SSL renewal).
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.well-known/**
+            **/.htaccess
+            **/cgi-bin/**

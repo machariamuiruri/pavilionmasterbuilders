@@ -14,7 +14,7 @@ so it's far easier to grow and maintain.
   list, so they can never drift out of sync.
 - **CSS and JS are separate files** — `src/styles/global.css` and `src/scripts/main.js`, which
   Astro bundles and minifies automatically at build time.
-- Still deploys as static files anywhere (Vercel, Netlify, Cloudflare Pages, GitHub Pages).
+- Still deploys as static files anywhere (cPanel, Netlify, Cloudflare Pages, GitHub Pages).
 
 ## Requirements
 
@@ -70,10 +70,11 @@ The enquiry form posts to [Web3Forms](https://web3forms.com/) — free, no backe
 2. Copy `.env.example` to `.env` and set `PUBLIC_WEB3FORMS_KEY=your-key`.
 3. Rebuild / redeploy. (Without a key the form still renders; it just won't deliver.)
 
-## Deployment (Vercel)
+## Deployment (cPanel)
 
-Import the repo in Vercel — it auto-detects Astro (build: `astro build`, output: `dist/`).
-Add the `PUBLIC_WEB3FORMS_KEY` environment variable in the Vercel dashboard. Push to deploy.
+Hosted on cPanel. Pushing to `main` triggers a GitHub Actions run that builds the site and
+uploads `dist/` to `public_html/` over FTPS. See [DEPLOY.md](DEPLOY.md) for setup and the
+required repository secrets.
 
 ---
 
