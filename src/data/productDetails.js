@@ -19,6 +19,7 @@ export const productDetails = {
     title: 'Decra Roofing',
     tag: 'Stone-Coated Roofing',
     tagline: 'Genuine DECRA\u00ae stone-coated steel roofing \u2014 lightweight, elegant, and built to last 50+ years.',
+    metaDescription: 'Genuine DECRA\u00ae stone-coated steel roofing in Kenya \u2014 50+ year lifespan, lightweight and weatherproof. Request a free quote from Pavilion Master Builders.',
     heroImage: '/assets/roofing-decra/decra-roof-example-01.jpeg',
     intro: 'Decra roofing tiles are lightweight metal roofing systems coated with natural stone chips for durability and timeless style. First developed in New Zealand in the 1950s as a stronger roofing solution, Decra combines the elegance of classic tiles with modern performance. As a Pavilion Master Builders supply, every tile is #GenuineDecra \u2014 the world\u2019s No.1 stone-coated metal roof tile.',
     highlights: [
@@ -93,6 +94,7 @@ export const productDetails = {
     title: 'Light Gauge Steel',
     tag: 'Alternative Build',
     tagline: 'FRAMECAD\u00ae light gauge steel \u2014 intelligent, automated framing for speed, precision and sustainability.',
+    metaDescription: 'FRAMECAD\u00ae light gauge steel framing in Kenya \u2014 faster, precise and sustainable construction. Get a free LGS project quote from Pavilion Master Builders.',
     heroImage: '/assets/light-gauge-steel/lgs-04.jpeg',
     intro: 'Pavilion Master Builders has partnered with FRAMECAD\u00ae to provide light gauge steel (LGS) \u2014 an innovative building solution that meets the growing demand for alternative construction. We leverage world-class technology for intelligent, automated steel-frame design and manufacturing that delivers unparalleled project efficiency. Our automated production and pre-assembled panels significantly reduce on-site labour and construction time, while software-driven precision eliminates human error and material waste, delivering frames with superior strength and durability.',
     highlights: [
@@ -153,6 +155,7 @@ export const productDetails = {
     title: 'Mixx Cement',
     tag: 'Decorative Finish',
     tagline: 'Cement with Style \u2014 decorative micro-cement with the look of Venetian plaster, at a fraction of the cost.',
+    metaDescription: 'Mixx decorative micro-cement in Kenya \u2014 Venetian plaster looks for walls and floors at a fraction of the cost. Request a free quote today.',
     heroImage: '/assets/mixx-cement/finishes/designer-wall-bedroom.jpeg',
     intro: 'Mixx delivers the effect of Venetian plaster \u2014 a complicated, expensive, high-skill finish \u2014 with a low-cost, easy-to-apply product. While competitor products need many components, Mixx is simply one bag of cement powder and one bottle of binder, mixed 1:1, followed by a sealer. It can be applied to walls, floors, worktops and even over existing tiles, indoors or out, in wet or dry areas. Designed for Africa, water-based and classed as non-hazardous.',
     highlights: [
@@ -221,6 +224,7 @@ export const productDetails = {
     title: 'Fiber Cement',
     tag: 'Boards & Cladding',
     tagline: 'Fire-, termite- and weather-resistant fiber cement boards for ceilings, cladding and flooring.',
+    metaDescription: 'Fire-, termite- and weather-resistant fibre cement boards in Kenya for ceilings, cladding and flooring. Request a free quote from Pavilion Master Builders.',
     heroImage: '/assets/fiber-cement/fiber-cement-09.jpeg',
     intro: 'Fiber cement boards are a transformative solution for modern construction, offering a perfect blend of superior durability, low maintenance and design flexibility. They are resistant to fire, termites and weathering, and transform both interiors and exteriors \u2014 making them ideal for ceilings, wall cladding and flooring. With easy installation and minimal environmental impact, fiber cement boards enhance the quality and safety of any space while being kind to the environment.',
     highlights: [
@@ -275,6 +279,7 @@ export const productDetails = {
     title: 'UPVC Gutters',
     tag: 'Rainwater Management',
     tagline: 'Durable, lightweight UPVC gutter systems for efficient, worry-free rainwater management.',
+    metaDescription: 'Durable UPVC gutter systems in Kenya for efficient rainwater management \u2014 lightweight, rust-free and long lasting. Request a free quote today.',
     heroImage: '/assets/upvc-gutters/gutters-01.jpeg',
     intro: 'Our UPVC gutters offer a durable, lightweight and cost-effective solution for effective rainwater management, featuring resistance to rust and corrosion, low maintenance requirements, and versatile designs that complement any building. Engineered for optimal performance, they ensure efficient drainage while preventing leaks and water damage. Their eco-friendly materials contribute to sustainable building practices \u2014 a smart choice for environmentally conscious projects.',
     highlights: [
@@ -327,6 +332,7 @@ export const productDetails = {
     title: 'Rust Converter',
     tag: 'Metal Protection',
     tagline: 'Neutrarust 661 \u2014 advanced rust converter and preventer that protects and extends the life of all metal.',
+    metaDescription: 'Neutrarust 661 rust converter in Kenya \u2014 neutralises rust and protects metal for longer life. Order or request a quote from Pavilion Master Builders.',
     heroImage: '/assets/rust-converter/neutrarust-01.jpeg',
     intro: 'Neutrarust 661 is our advanced rust-prevention system, designed to protect and extend the life of all metal surfaces. Its innovative formula creates a powerful barrier against moisture, corrosion and environmental damage, keeping assets in pristine condition. Easy to apply and suitable for a wide variety of applications, Neutrarust 661 is the ideal choice for both industrial and residential needs \u2014 safeguarding investments and prolonging their integrity for years to come.',
     highlights: [
@@ -380,6 +386,7 @@ export const productDetails = {
     title: 'Alternative Building',
     tag: 'Eco Build',
     tagline: 'Affordable, sustainable eco-builds delivered in record time \u2014 homes, schools, hotels and hospitals.',
+    metaDescription: 'Affordable, sustainable alternative building in Kenya \u2014 homes, schools, hotels and hospitals delivered fast. Request a free quote today.',
     heroImage: '/assets/alternative-building/alt-building-01.jpeg',
     intro: 'At Pavilion Master Builders, we offer affordable and sustainable eco-friendly housing solutions that prioritise quality while ensuring a rapid construction turnaround. Our innovative approach combines advanced building technologies and sustainable materials to deliver durable structures that are both environmentally friendly and cost-effective. We understand the urgency of construction needs \u2014 our solutions quickly deliver essential buildings, all in record time, built to withstand the test of time and adverse weather.',
     highlights: [
@@ -433,6 +440,7 @@ export const productDetails = {
     title: 'Re-roofing & Roof Cleaning',
     tag: 'Roofing Services',
     tagline: 'Professional re-roofing, roof cleaning and restoration \u2014 renew, protect and beautify your roof.',
+    metaDescription: 'Professional re-roofing, roof cleaning and restoration in Kenya \u2014 renew, protect and beautify your roof. Book a free site visit today.',
     heroImage: '/assets/reroofing-cleaning/reroof-clean-01.jpeg',
     intro: 'Your roof is not just a protective barrier \u2014 it\u2019s a vital component of your home\u2019s structure and aesthetic appeal. Whether you\u2019re dealing with wear and tear, leaks, or simply looking to upgrade, our re-roofing services are designed to enhance the safety, efficiency and beauty of your property. And because a clean roof is vital for longevity, our professional roof-cleaning service removes debris, moss and algae using eco-friendly solutions \u2014 keeping your roof in excellent condition and preventing deterioration.',
     highlights: [
