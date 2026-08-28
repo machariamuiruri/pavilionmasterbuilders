@@ -38,11 +38,19 @@ GitHub repo → **Settings → Secrets and variables → Actions → New reposit
 
 | Secret | Value |
 | ------ | ----- |
-| `PUBLIC_WEB3FORMS_KEY` | Your Web3Forms access key |
-| `FTP_SERVER` | Your FTP hostname, e.g. `ftp.pavilionmasterbuilders.com` |
-| `FTP_USERNAME` | Full FTP username, usually `deploy@pavilionmasterbuilders.com` |
+| `PUBLIC_WEB3FORMS_KEY` | `ac32a660-6380-4e2b-aae5-2c4e8c41d6d1` |
+| `FTP_SERVER` | `rs8.rcnoc.com` |
+| `FTP_USERNAME` | `deploy@pavilionmasterbuilders.com` |
 | `FTP_PASSWORD` | The FTP account password |
-| `FTP_SERVER_DIR` | `./` or `./public_html/` — see the table above |
+| `FTP_SERVER_DIR` | `./` (the deploy account's home *is* `public_html`) |
+
+**Do not use `ftp.pavilionmasterbuilders.com`** — cPanel's FTP Accounts page suggests it, but
+that DNS record does not exist (confirmed NXDOMAIN). cPanel prints `ftp.<domain>` from a
+template without checking the zone. `rs8.rcnoc.com` is the server's real hostname, and using
+it also avoids an FTPS certificate hostname mismatch.
+
+The Web3Forms key is not really a secret — it is inlined into the page source and visible to
+anyone. It lives in a GitHub secret so it is easy to rotate, not because it needs hiding.
 
 ### 4. Back up the current `public_html` before the first deploy
 
@@ -139,3 +147,20 @@ directory. See the table in step 2.
 
 **Changes don't appear** — hard-refresh (Ctrl+Shift+R). If it persists, check the Actions tab
 that the run actually succeeded.
+
+**Deploy fails on "The deploy target is EMPTY"** — the FTP account's home directory is not
+`public_html`. cPanel cannot change an existing account's directory; delete the account and
+recreate it, overwriting the auto-filled **Directory** field with `public_html`. See step 2.
+
+## Why there is no automated post-deploy check
+
+The site sits behind a JavaScript bot-challenge ("One moment, please..."). Any non-browser
+client — including GitHub's runners and `curl` — receives the challenge page with HTTP 200
+instead of the real content, so CI cannot confirm over HTTP what the site is serving. A check
+like that would fail on every deploy, including good ones.
+
+Instead the workflow inspects the FTP target *before* uploading and fails if it is empty,
+which is the signature of an account pointed at the wrong folder. Each build also writes
+`deploy-stamp.txt` containing the deployed commit SHA — open
+https://www.pavilionmasterbuilders.com/deploy-stamp.txt **in a browser** (which passes the
+challenge) and compare it to `git rev-parse HEAD` to confirm what is live.

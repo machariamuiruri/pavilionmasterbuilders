@@ -38,6 +38,39 @@ jobs:
             exit 1
           fi
 
+      # Written into dist/ so it ships with the site. The post-deploy check reads
+      # it back over HTTP to prove these exact files are the ones being served.
+      - name: Stamp the build
+        run: echo "$GITHUB_SHA" > dist/deploy-stamp.txt
+
+      # An FTP account pointed at the wrong folder uploads every file happily and
+      # leaves the site unchanged, which looks identical to success. The site sits
+      # behind a JS bot-challenge so CI can't verify over HTTP -- instead, look at
+      # the target before writing: public_html always already contains the site.
+      - name: Pre-flight — confirm the FTP target is public_html
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+        run: |
+          dir="${FTP_SERVER_DIR#./}"
+          listing=$(curl -sS --ssl-reqd --list-only \
+            -u "$FTP_USERNAME:$FTP_PASSWORD" \
+            "ftp://$FTP_SERVER/$dir") || {
+              echo "::error::Could not connect or list the FTP target."
+              echo "Check FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, and that the host allows FTPS from GitHub runners."
+              exit 1
+            }
+          echo "Contents of the deploy target:"
+          echo "$listing" | sed 's/^/  /'
+          if [ -z "${listing//[[:space:]]/}" ]; then
+            echo "::error::The deploy target is EMPTY, so it is almost certainly not public_html."
+            echo "public_html already contains your live site. An empty directory means the FTP"
+            echo "account's home is a subfolder. Check the Path column in cPanel > FTP Accounts."
+            exit 1
+          fi
+
       - name: Upload to public_html
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -55,3 +88,4 @@ jobs:
             **/.well-known/**
             **/.htaccess
             **/cgi-bin/**
+
