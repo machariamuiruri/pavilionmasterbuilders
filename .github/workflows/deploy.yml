@@ -55,7 +55,9 @@ jobs:
           FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
         run: |
           dir="${FTP_SERVER_DIR#./}"
-          listing=$(curl -sS --ssl-reqd --list-only \
+          # Full LIST, not NLST: some servers omit directories from --list-only,
+          # which makes the account root look deceptively empty.
+          listing=$(curl -sS --ssl-reqd \
             -u "$FTP_USERNAME:$FTP_PASSWORD" \
             "ftp://$FTP_SERVER/$dir") || {
               echo "::error::Could not connect or list the FTP target."
@@ -64,10 +66,13 @@ jobs:
             }
           echo "Contents of the deploy target:"
           echo "$listing" | sed 's/^/  /'
-          if [ -z "${listing//[[:space:]]/}" ]; then
-            echo "::error::The deploy target is EMPTY, so it is almost certainly not public_html."
-            echo "public_html already contains your live site. An empty directory means the FTP"
-            echo "account's home is a subfolder. Check the Path column in cPanel > FTP Accounts."
+          # public_html always already contains the live site. Require a real marker
+          # rather than mere non-emptiness -- .ftpquota alone is not the docroot.
+          if ! grep -qE '(^| )index\.html *$' <<<"$listing"; then
+            echo "::error::The deploy target does not contain index.html, so it is not the docroot."
+            echo "If you see .ftpquota, mail/ or logs/ above, this is the account root and"
+            echo "FTP_SERVER_DIR should be './public_html/'. If it looks like an empty subfolder,"
+            echo "the FTP account's home is wrong -- check Path in cPanel > FTP Accounts."
             exit 1
           fi
 
