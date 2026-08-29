@@ -1895,3 +1895,10 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
     .blog-post-body, .blog-post-related, .blog-post-cta, .blog-post-tags { padding-left: 1.5rem; padding-right: 1.5rem; }
     .blog-post-hero { padding: 0 1.5rem; }
 }
+
+/* The global .breadcrumb colours assume the dark product hero. The post header
+   sits on the light background, so they need inverting here. */
+.blog-post-header .breadcrumb { justify-content: center; }
+.blog-post-header .breadcrumb a { color: var(--text-light); }
+.blog-post-header .breadcrumb a:hover { color: var(--success); }
+.blog-post-header .breadcrumb span { color: var(--text-lighter); }

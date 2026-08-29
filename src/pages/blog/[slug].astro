@@ -21,7 +21,10 @@ const related = relatedProducts
 ---
 <BaseLayout title={`${title} | Pavilion Master Builders`} description={description}>
   <article class="blog-post">
-    <header class="blog-post-header">
+    <!-- Deliberately a div, not a <header>: global.css styles the bare `header`
+         element as the fixed site nav, so a <header> here gets pinned to the top
+         of the viewport and dragged out of the document flow. -->
+    <div class="blog-post-header">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span><a href="/blog">Blog</a><span>/</span><span>{title}</span>
       </nav>
@@ -32,7 +35,7 @@ const related = relatedProducts
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
         {updatedDate && <span>· Updated {formatDate(updatedDate)}</span>}
       </div>
-    </header>
+    </div>
 
     {heroImage && (
       <div class="blog-post-hero">
