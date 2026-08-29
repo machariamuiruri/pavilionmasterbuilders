@@ -70,7 +70,7 @@ export const products = [
   {
     tag: "Eco Build",
     img: "/assets/alternative-building/alt-building-01.jpeg",
-    alt: "Alternative eco building",
+    alt: "Light gauge steel A-frame structure under construction on site",
     title: "Alternative Building",
     slug: "alternative-building",
     link: "/products/alternative-building",
