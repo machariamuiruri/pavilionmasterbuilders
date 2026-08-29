@@ -3,11 +3,47 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsApp from '../components/WhatsApp.astro';
+import { offices, email } from '../data/site.js';
 
 const {
   title = 'Pavilion Master Builders - Premium Construction Excellence',
   description = 'Sustainable building solutions across East Africa — Decra roofing, light gauge steel, Mixx decorative cement, fiber cement, gutters and more.',
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const origin = Astro.site.origin;
+
+// Built from the same `offices` array the Contact section and Footer use, so an
+// address or phone number is only ever edited in one place (src/data/site.js).
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${origin}/#organization`,
+      name: 'Pavilion Master Builders',
+      url: `${origin}/`,
+      email,
+      logo: `${origin}/PAV.png`,
+      areaServed: { '@type': 'Country', name: 'Kenya' },
+    },
+    ...offices.map((office) => ({
+      '@type': 'LocalBusiness',
+      '@id': `${origin}/#${office.short.toLowerCase()}`,
+      name: `Pavilion Master Builders — ${office.name}`,
+      parentOrganization: { '@id': `${origin}/#organization` },
+      url: `${origin}/`,
+      email,
+      telephone: office.phones.map((phone) => phone.tel),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: office.address,
+        addressLocality: office.short,
+        addressCountry: 'KE',
+      },
+    })),
+  ],
+};
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +52,7 @@ const {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.png" />
@@ -23,6 +60,21 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- TODO: Replace TODO with the Search Console verification token, then verify the property. -->
+  <meta name="google-site-verification" content="TODO" />
+
+  <!-- TODO: Insert the GA4 Measurement ID (format: G-ABC1234567) by replacing both
+       occurrences of G-XXXXXXXXXX below. Until then this sends no data. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </head>
 <body>
   <Nav />
