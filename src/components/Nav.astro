@@ -2,7 +2,24 @@
 import { navLinks } from '../data/site.js';
 const currentPath = Astro.url.pathname;
 const onProductPage = currentPath.startsWith('/products/');
-const sectionKey = (href) => href.split('#')[1] || 'home';
+// Only homepage sections take part in the scroll spy. Real routes like /blog must
+// NOT get a key, or main.js would highlight them alongside the matching section.
+const sectionKey = (href) => {
+  if (href === '/') return 'home';
+  if (href.includes('#')) return href.split('#')[1] || 'home';
+  return undefined;
+};
+
+// Astro serves directory-style URLs with a trailing slash ('/blog/'), while
+// navLinks stores them without ('/blog'). Comparing the two raw strings never
+// matches, which is why the current product never highlighted in the dropdown.
+const trim = (path) => path.replace(/\/+$/, '') || '/';
+const isActive = (href) => {
+  if (href.includes('#')) return false; // in-page anchors are handled by the scroll spy
+  const target = trim(href);
+  const here = trim(currentPath);
+  return target === '/' ? here === '/' : here === target || here.startsWith(`${target}/`);
+};
 ---
 <header>
   <nav>
@@ -25,12 +42,12 @@ const sectionKey = (href) => href.split('#')[1] || 'home';
               <a href={link.href} data-scroll-key="products" class={onProductPage ? 'active' : ''}>{link.label}</a>
               <div class="nav-dropdown-menu">
                 {link.dropdown.map((item) => (
-                  <a href={item.href} class={currentPath === item.href ? 'active' : ''}>{item.label}</a>
+                  <a href={item.href} class={isActive(item.href) ? 'active' : ''}>{item.label}</a>
                 ))}
               </div>
             </li>
           ) : (
-            <li><a href={link.href} data-scroll-key={sectionKey(link.href)} class={currentPath === link.href ? 'active' : ''}>{link.label}</a></li>
+            <li><a href={link.href} data-scroll-key={sectionKey(link.href)} class={isActive(link.href) ? 'active' : ''}>{link.label}</a></li>
           )
         ))}
       </ul>
