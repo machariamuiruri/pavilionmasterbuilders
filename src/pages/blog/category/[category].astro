@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import { publishedPosts, categoriesOf, slugify } from '../../../utils/blog.js';
+
+export async function getStaticPaths() {
+  const posts = publishedPosts(await getCollection('blog'));
+  return categoriesOf(posts).map((category) => ({
+    params: { category: category.slug },
+    props: {
+      category,
+      posts: posts.filter((post) => slugify(post.data.category) === category.slug),
+    },
+  }));
+}
+
+const { category, posts } = Astro.props;
+const allCategories = categoriesOf(publishedPosts(await getCollection('blog')));
+---
+<BaseLayout
+  title={`${category.name} Articles | Pavilion Master Builders`}
+  description={`Articles on ${category.name.toLowerCase()} from the Pavilion Master Builders team in Kenya. Read our guidance and request a free quote.`}
+>
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><a href="/blog">Blog</a><span>/</span><span>{category.name}</span>
+      </nav>
+      <h1>{category.name}</h1>
+      <p>{category.count} article{category.count === 1 ? '' : 's'} in this category.</p>
+    </div>
+  </section>
+
+  <section class="blog-listing">
+    <div class="blog-categories">
+      <span class="blog-categories-label">Browse:</span>
+      <a href="/blog" class="blog-chip">All</a>
+      {allCategories.map((c) => (
+        <a href={`/blog/category/${c.slug}`} class={`blog-chip${c.slug === category.slug ? ' active' : ''}`}>
+          {c.name} ({c.count})
+        </a>
+      ))}
+    </div>
+
+    <div class="blog-grid">
+      {posts.map((post) => <BlogCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>
