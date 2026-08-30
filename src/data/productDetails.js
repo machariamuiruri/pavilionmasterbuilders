@@ -438,6 +438,73 @@ export const productDetails = {
     ],
   },
 
+  'a-frame-structures': {
+    slug: 'a-frame-structures',
+    title: 'A-Frame Structures',
+    tag: 'Steel Framed',
+    tagline: 'Iconic design. Steel-framed strength. Built for how you’ll actually use it.',
+    metaDescription: 'Steel-framed A-Frame homes and cabins built for speed, strength, and Kenya’s climate. Explore our A-Frame structures and request a free quote from Pavilion Master Builders.',
+    heroImage: '/assets/a-frame-structures/a-frame-progress-2.jpeg',
+    intro: 'The A-Frame has long been the shape of the classic retreat — steep, symmetrical rooflines that shed rain, flood the interior with light, and make a small footprint feel dramatic. We build ours in light-gauge steel, not timber. That means faster construction, no risk of termite damage or rot, and a frame engineered to hold its shape for decades with minimal upkeep. It’s built on the same <a href="/products/light-gauge-steel">light-gauge steel framing system</a> behind our other steel structures.',
+    ctaHeading: 'Ready to Build Your A-Frame?',
+    ctaBody: 'Tell us about your site and vision, and we’ll put together a free consultation and quote.',
+    highlights: [
+      { icon: '⚡', title: 'Faster to Build', desc: 'Prefabricated steel goes up in a fraction of the time.' },
+      { icon: '🛡️', title: 'Termite & Rot Proof', desc: 'Galvanized steel shrugs off pests and damp.' },
+      { icon: '🏔️', title: 'Soaring Interiors', desc: 'Open plans, lofts and glazed gable ends.' },
+      { icon: '🧰', title: 'Low Maintenance', desc: 'No repainting, no seasonal pest treatment.' },
+    ],
+    sections: [
+      {
+        type: 'benefits',
+        heading: 'Why Steel-Framed A-Frames',
+        columns: 2,
+        items: [
+          'Faster to build — prefabricated steel components go up in a fraction of the time conventional construction takes',
+          'Lighter foundations — point and pier foundations mean less groundwork and faster site prep than concrete-slab or masonry construction',
+          'Built to last — galvanized steel resists termites, rot and warping, even in humid or high-rainfall conditions',
+          'Engineered strength — steel trusses handle the A-Frame’s steep roofline with more consistency than timber framing',
+          'Design flexibility — open-plan interiors, mezzanine lofts and large glazed gable ends are all straightforward to engineer',
+          'Low maintenance — no repainting, no pest treatment, none of the seasonal upkeep timber structures demand',
+        ],
+      },
+      {
+        type: 'benefits',
+        heading: 'Ideal Uses',
+        intro: 'The A-Frame suits anywhere a small footprint needs to feel generous.',
+        columns: 2,
+        items: [
+          'Weekend and holiday homes',
+          'Glamping cabins and eco-lodges',
+          'Guest cottages and BnB units',
+          'Garden studios and home offices',
+          'Farm and ranch retreats',
+        ],
+      },
+      {
+        type: 'feature-grid',
+        heading: 'Our Process',
+        intro: 'From first site visit to handover, five clear stages.',
+        items: [
+          { icon: '1️⃣', title: 'Consultation & Site Assessment', desc: 'We visit your site, understand your goals, and assess access, terrain and foundation needs.' },
+          { icon: '2️⃣', title: 'Design & Engineering', desc: 'Your A-Frame is designed and structurally engineered around your chosen size, layout and site.' },
+          { icon: '3️⃣', title: 'Fabrication', desc: 'Steel components are fabricated off-site to precise specifications.' },
+          { icon: '4️⃣', title: 'On-Site Assembly', desc: 'The frame is erected on-site, ready for roofing, cladding and finishing.' },
+          { icon: '5️⃣', title: 'Handover', desc: 'Your A-Frame is completed, inspected and handed over ready to use.' },
+        ],
+      },
+      {
+        type: 'gallery',
+        heading: 'From Foundation to Peak',
+        intro: 'Under construction: our light-gauge steel A-Frame, from foundation to peak.',
+        images: [
+          { src: '/assets/a-frame-structures/a-frame-progress-1.jpeg', alt: 'Light-gauge steel A-Frame under construction, side elevation showing the full length of the steel roof trusses' },
+          { src: '/assets/a-frame-structures/a-frame-progress-2.jpeg', alt: 'Steel-framed A-Frame viewed from the gable end, with the floor structure and apex trusses in place' },
+        ],
+      },
+    ],
+  },
+
   'reroofing-cleaning': {
     slug: 'reroofing-cleaning',
     title: 'Re-roofing & Roof Cleaning',
@@ -493,5 +560,6 @@ export const productDetails = {
 // Order for "explore other solutions" and static path generation
 export const productOrder = [
   'decra-roofing', 'light-gauge-steel', 'mixx-cement', 'fiber-cement',
-  'upvc-gutters', 'rust-converter', 'alternative-building', 'reroofing-cleaning',
+  'upvc-gutters', 'rust-converter', 'alternative-building', 'a-frame-structures',
+  'reroofing-cleaning',
 ];

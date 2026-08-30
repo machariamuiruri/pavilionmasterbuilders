@@ -23,6 +23,7 @@ export const navLinks = [
       { label: "UPVC Gutters", href: "/products/upvc-gutters" },
       { label: "Rust Converter", href: "/products/rust-converter" },
       { label: "Alternative Building", href: "/products/alternative-building" },
+      { label: "A-Frame Structures", href: "/products/a-frame-structures" },
       { label: "Re-roofing & Cleaning", href: "/products/reroofing-cleaning" },
     ],
   },
@@ -41,7 +42,7 @@ export const stats = [
 export const services = [
   "Decra Roofing", "Light Gauge Steel", "Mixx Cement", "Fiber Cement Boards",
   "UPVC Gutters", "Rust Converter (Neutrarust)", "Alternative Building",
-  "Re-roofing & Roof Cleaning", "General Enquiry",
+  "A-Frame Structures", "Re-roofing & Roof Cleaning", "General Enquiry",
 ];
 
 export const projects = [

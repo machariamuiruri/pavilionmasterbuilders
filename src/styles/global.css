@@ -1902,3 +1902,68 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
 .blog-post-header .breadcrumb a { color: var(--text-light); }
 .blog-post-header .breadcrumb a:hover { color: var(--success); }
 .blog-post-header .breadcrumb span { color: var(--text-lighter); }
+
+/* ── A-Frame Structures ──────────────────────────────────────────────────────
+   Featured homepage section directly after the Products grid. Split layout:
+   photo one side, copy the other; stacks on mobile with the photo first. */
+.aframe {
+    padding: 7rem 4rem;
+    background: var(--surface);
+}
+.aframe-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.aframe-media {
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px 0 rgba(45, 90, 61, 0.12);
+    aspect-ratio: 4 / 3;
+}
+.aframe-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.aframe-eyebrow {
+    display: inline-block;
+    background: rgba(212, 165, 116, 0.18);
+    border: 1px solid rgba(212, 165, 116, 0.45);
+    color: var(--accent-dark);
+    padding: 0.45rem 1.1rem;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.3rem;
+}
+.aframe-body h2 {
+    font-size: clamp(2rem, 3.4vw, 2.9rem);
+    font-weight: 500;
+    line-height: 1.12;
+    color: var(--text);
+    margin-bottom: 1.2rem;
+}
+.aframe-body p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-light);
+    margin-bottom: 2.2rem;
+}
+
+@media (max-width: 900px) {
+    .aframe { padding: 4.5rem 2rem; }
+    .aframe-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .aframe-media { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 600px) {
+    .aframe { padding: 3.5rem 1.5rem; }
+    .aframe-inner { gap: 2rem; }
+    .aframe-body p { font-size: 1rem; margin-bottom: 1.8rem; }
+}

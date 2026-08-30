@@ -36,7 +36,9 @@ const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
   <!-- Intro + highlights -->
   <section class="product-intro">
     <div class="product-intro-inner">
-      <p class="product-intro-text">{product.intro}</p>
+      {/* set:html so an intro can contain inline links to related products.
+          Existing intros are plain text and render identically. */}
+      <p class="product-intro-text" set:html={product.intro}></p>
       <div class="highlight-grid">
         {product.highlights.map((h) => (
           <div class="highlight-card">
@@ -54,8 +56,8 @@ const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
   <!-- CTA -->
   <section class="final-cta">
-    <h2>Interested in {product.title}?</h2>
-    <p>Get expert guidance and a comprehensive free quote from our team today.</p>
+    <h2>{product.ctaHeading ?? `Interested in ${product.title}?`}</h2>
+    <p>{product.ctaBody ?? 'Get expert guidance and a comprehensive free quote from our team today.'}</p>
     <a class="btn-primary" href="/#contact">Request a Quote</a>
   </section>
 
