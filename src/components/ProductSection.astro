@@ -91,9 +91,12 @@ const { block, alt = false } = Astro.props;
         </div>
       )}
       <div class="pgallery">
-        {block.images.map((im) => (
-          <div class="pgallery-item"><img src={typeof im === 'string' ? im : im.src} alt={block.heading || 'Project image'} loading="lazy" /></div>
-        ))}
+        {block.images.map((im) => {
+          // Images may be a bare src string, or {src, alt} for descriptive alt text.
+          const src = typeof im === 'string' ? im : im.src;
+          const alt = (typeof im === 'string' ? null : im.alt) ?? block.heading ?? 'Project image';
+          return <div class="pgallery-item"><img src={src} alt={alt} loading="lazy" /></div>;
+        })}
       </div>
     </div>
   </section>
