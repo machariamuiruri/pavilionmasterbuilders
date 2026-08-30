@@ -387,7 +387,7 @@ export const productDetails = {
     tag: 'Eco Build',
     tagline: 'Affordable, sustainable eco-builds delivered in record time \u2014 homes, schools, hotels and hospitals.',
     metaDescription: 'Affordable, sustainable alternative building in Kenya \u2014 homes, schools, hotels and hospitals delivered fast. Request a free quote today.',
-    heroImage: '/assets/alternative-building/alt-building-01.jpeg',
+    heroImage: '/assets/alternative-building/alt-building-toa-blue-roof.jpeg',
     intro: 'At Pavilion Master Builders, we offer affordable and sustainable eco-friendly housing solutions that prioritise quality while ensuring a rapid construction turnaround. Our innovative approach combines advanced building technologies and sustainable materials to deliver durable structures that are both environmentally friendly and cost-effective. We understand the urgency of construction needs \u2014 our solutions quickly deliver essential buildings, all in record time, built to withstand the test of time and adverse weather.',
     highlights: [
       { icon: '\u26A1', title: 'Record Time', desc: 'Rapid construction turnaround.' },
@@ -426,6 +426,9 @@ export const productDetails = {
         type: 'gallery',
         heading: 'Recent Builds',
         images: [
+          '/assets/alternative-building/alt-building-toa-coastal.jpeg',
+          '/assets/alternative-building/alt-building-toa-frame.jpeg',
+          '/assets/alternative-building/alt-building-a-frame.jpeg',
           '/assets/alternative-building/alt-building-02.jpeg',
           '/assets/alternative-building/alt-building-03.jpeg',
           '/assets/alternative-building/alt-building-04.jpeg',
