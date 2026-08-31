@@ -45,27 +45,30 @@ export const services = [
   "A-Frame Structures", "Re-roofing & Roof Cleaning", "General Enquiry",
 ];
 
+// Photos live in public/assets/, like every other image on the site. These
+// three previously pointed at /wp-content/uploads/ on the old WordPress install
+// — files the Astro build does not produce and the deploy does not manage.
 export const projects = [
   {
-    img: "https://www.pavilionmasterbuilders.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-05-at-06.25.15_43a2c6a3-edited.jpg",
-    alt: "Modern Commercial Building",
+    img: "/assets/project-showcase/showcase-01.jpeg",
+    alt: "Two-storey stone commercial building under construction, with light gauge steel roof trusses being lifted into place",
     category: "Commercial",
     title: "Premium Office Complex",
     desc: "State-of-the-art commercial development featuring advanced LGS technology and sustainable design practices.",
   },
   {
-    img: "https://www.pavilionmasterbuilders.com/wp-content/uploads/2025/10/IMG-20251011-WA0035.jpg",
-    alt: "Residential Development",
+    img: "/assets/project-showcase/showcase-07.jpeg",
+    alt: "Completed two-storey private home at dusk, finished in white render with a dark tiled roof",
     category: "Residential",
     title: "Luxury Residential Estate",
     desc: "Elegant residential community with premium finishes, Decra roofing systems, and modern architectural design.",
   },
   {
-    img: "https://www.pavilionmasterbuilders.com/wp-content/uploads/2025/11/pexels-kindelmedia-8488008-scaled.jpg",
-    alt: "Industrial Project",
-    category: "Industrial",
-    title: "Manufacturing Facility",
-    desc: "Large-scale industrial complex built with precision engineering and advanced construction technology.",
+    img: "/assets/project-showcase/showcase-08.jpeg",
+    alt: "Broad micro-cement entrance steps leading to a timber front door, finished as one seamless surface",
+    category: "Finishes",
+    title: "Seamless Micro-Cement Entrance",
+    desc: "Entrance steps and landing finished in Mixx micro-cement — one continuous surface with no tiles, joints or grout lines to weather.",
   },
 ];
 
