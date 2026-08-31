@@ -4,23 +4,11 @@ description: "Mixx Cement is a decorative micro-cement coating now available in 
 pubDate: 2026-08-30
 category: "Finishes"
 tags: ["mixx cement", "micro-cement", "decorative finishes"]
-heroImage: "/assets/blog/mixx-cement-wall-finish.jpeg"
-heroAlt: "Mixx Cement decorative micro-cement finish on a wall"
+heroImage: "/assets/mixx-cement/applications/application-01.jpeg"
+heroAlt: "A wall finished in Mixx Cement, hand-trowelled to a warm textured micro-cement surface"
 relatedProducts: ["mixx-cement"]
-draft: true
+draft: false
 ---
-
-<!--
-  TO PUBLISH THIS POST — two steps:
-  1. Add these three photos to public/assets/blog/
-       mixx-cement-wall-finish.jpeg          (hero — a finished wall or floor)
-       mixx-cement-trowel-application.jpeg   (the coating going on)
-       mixx-cement-kitchen-countertop.jpeg   (a finished worktop or feature wall)
-  2. Change `draft: true` above to `draft: false`, then commit and push.
-
-  It is marked as a draft so it does not go live with three broken images.
-  Drafts are visible in `npm run dev` but excluded from the published site.
--->
 
 Most surfaces look their best on handover day. The paint is even, the grout is clean,
 nothing has been dragged across the floor yet. Two or three years later the picture is
@@ -79,9 +67,6 @@ working surface: it takes the day-to-day abrasion, resists staining, and makes t
 straightforward to wipe down. On a floor or a worktop, the sealer is doing most of the
 hard work.
 
-<!-- IMAGE SLOT 2 — add public/assets/blog/mixx-cement-trowel-application.jpeg -->
-![Mixx Cement being applied with a trowel for a textured finish](/assets/blog/mixx-cement-trowel-application.jpeg)
-
 Because the film is thin, doors still close, skirtings still line up, and floor levels do
 not shift — the practical problems that make people abandon a refinishing plan before
 they start.
@@ -107,8 +92,7 @@ to the terrace, that continuity is difficult to achieve any other way.
 There is also a designer colour range, so the finish is not restricted to grey — the
 concrete look is a starting point, not the only destination.
 
-<!-- IMAGE SLOT 3 — add public/assets/blog/mixx-cement-kitchen-countertop.jpeg -->
-![Mixx Cement micro-cement finish on a kitchen countertop](/assets/blog/mixx-cement-kitchen-countertop.jpeg)
+![A bathroom finished in Mixx Cement — walls, floor and shower in one continuous micro-cement surface with no tiles or grout lines](/assets/mixx-cement/applications/application-09.jpeg)
 
 ## Why It Holds Up Better Than Paint or Tile
 

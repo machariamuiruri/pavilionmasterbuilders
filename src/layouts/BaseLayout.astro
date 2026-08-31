@@ -64,14 +64,16 @@ const schema = {
   <!-- TODO: Replace TODO with the Search Console verification token, then verify the property. -->
   <meta name="google-site-verification" content="TODO" />
 
-  <!-- TODO: Insert the GA4 Measurement ID (format: G-ABC1234567) by replacing both
-       occurrences of G-XXXXXXXXXX below. Until then this sends no data. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google Analytics 4. This layout wraps every page, so the tag ships on all of
+       them automatically — there is no per-page step. A CI check in deploy.yml
+       fails the build if any page in dist/ is missing this ID.
+       The Measurement ID is not a secret; it is visible in the page source. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N9ZD21PHG1"></script>
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'G-N9ZD21PHG1');
   </script>
 
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
