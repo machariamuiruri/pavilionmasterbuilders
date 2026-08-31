@@ -31,6 +31,9 @@ const isActive = (href) => {
         <span class="brand-line brand-line-2">Master Builders</span>
       </span>
     </a>
+    <button class="nav-search-toggle" id="search-toggle" aria-label="Search the site" aria-expanded="false" aria-controls="site-search">
+      <i class="fas fa-search" aria-hidden="true"></i>
+    </button>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
       <span></span><span></span><span></span>
     </button>
@@ -54,4 +57,29 @@ const isActive = (href) => {
       <button class="nav-cta" onclick="location.href='/#contact'">Get Quote</button>
     </div>
   </nav>
+
+  <!-- Search panel. Results are rendered by src/scripts/search.js against
+       /search.json, which is only fetched once the panel is first opened. -->
+  <div class="site-search" id="site-search" hidden>
+    <div class="site-search-inner">
+      <div class="site-search-field">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input
+          id="site-search-input"
+          type="text"
+          placeholder="Search roofing, steel, finishes, guides…"
+          aria-label="Search the site"
+          autocomplete="off"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="site-search-results"
+          aria-autocomplete="list"
+        />
+        <button class="site-search-close" type="button" aria-label="Close search">×</button>
+      </div>
+      <ul class="site-search-results" id="site-search-results" role="listbox" aria-label="Search results"></ul>
+      <p class="site-search-empty" hidden></p>
+      <p class="site-search-hint">Press <kbd>/</kbd> to search · <kbd>Esc</kbd> to close</p>
+    </div>
+  </div>
 </header>
