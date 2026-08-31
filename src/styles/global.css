@@ -247,6 +247,21 @@
             transform: translateY(0);
         }
 
+        /* The menu is offset 1rem below the trigger, and that gap is inside
+           neither box — moving the cursor across it at normal speed drops
+           :hover on the <li> and the menu closes before you reach it. This
+           bridges the gap so the hover target is continuous. It inherits
+           pointer-events: none while the menu is hidden, so it can never open
+           the menu from empty space below the nav. */
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -1rem;
+            left: 0;
+            right: 0;
+            height: 1rem;
+        }
+
         .nav-dropdown-menu a {
             display: block;
             padding: 0.85rem 1.2rem;
@@ -1567,6 +1582,8 @@
                 padding: 0.2rem 0 0.4rem;
                 background: rgba(45, 90, 61, 0.05);
             }
+            /* No hover gap to bridge here — the menu expands inline. */
+            .nav-dropdown-menu::before { display: none; }
             .nav-dropdown-menu a { padding: 0.65rem 3rem; }
             .nav-dropdown-menu a:hover { padding-left: 3rem; }
             .nav-cta { margin: 1rem 2rem 0; text-align: center; }
