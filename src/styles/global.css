@@ -1985,6 +1985,126 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
     .aframe-body p { font-size: 1rem; margin-bottom: 1.8rem; }
 }
 
+/* ---- Image lightbox ---------------------------------------------------- */
+/* Overlay markup is created by main.js on the first click, so these rules are
+   the only cost carried by a page nobody interacts with. */
+
+/* Keep in sync with ZOOMABLE in src/scripts/main.js. */
+.pgallery-item img,
+.pcolour img,
+.pfeature-photo img,
+.chart-panel img,
+.finish-photo img,
+.sealer-photo img,
+.project-image img,
+.aframe-media img,
+.blog-post-hero img,
+.blog-post-body img {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(12, 18, 24, 0.93);
+    /* Only opacity and transform animate -- both run on the compositor, so
+       opening never triggers layout or paint on the page underneath. */
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.lightbox.open { opacity: 1; }
+
+.lightbox-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    max-width: min(1400px, 100%);
+    transform: scale(0.97);
+    transition: transform 0.25s ease;
+}
+
+.lightbox.open .lightbox-figure { transform: scale(1); }
+
+.lightbox-figure img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 9rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+    cursor: default;
+}
+
+.lightbox-caption {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 60ch;
+}
+
+.lightbox-caption:empty { display: none; }
+
+.lightbox-btn {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 1.7rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.lightbox-btn:hover { background: rgba(255, 255, 255, 0.28); }
+.lightbox-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.lightbox-btn[hidden] { display: none; }
+
+.lightbox-close { top: 1.2rem; right: 1.2rem; font-size: 1.5rem; }
+.lightbox-prev { left: 1.2rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 1.1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+    .lightbox { padding: 1rem; }
+    .lightbox-figure img { max-height: calc(100vh - 8rem); }
+    .lightbox-btn { width: 40px; height: 40px; font-size: 1.4rem; }
+    .lightbox-prev { left: 0.5rem; }
+    .lightbox-next { right: 0.5rem; }
+    .lightbox-close { top: 0.6rem; right: 0.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lightbox,
+    .lightbox-figure { transition: none; }
+}
+
 /* ---- Site search -------------------------------------------------------- */
 
 .nav-search-toggle {
