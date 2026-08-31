@@ -38,6 +38,21 @@ jobs:
             exit 1
           fi
 
+      # Every page carries the GA4 tag because they all render through
+      # BaseLayout.astro. That is a convention, not a guarantee -- a new page that
+      # skipped the layout would ship untracked and nobody would notice for months.
+      # So check the built HTML rather than trusting the source.
+      - name: Fail if any page is missing the Google Analytics tag
+        run: |
+          missing=$(find dist -name '*.html' -print0 | xargs -0 grep -L 'G-N9ZD21PHG1' || true)
+          if [ -n "$missing" ]; then
+            echo "::error::These built pages are missing the GA4 tag:"
+            echo "$missing" | sed 's/^/  /'
+            echo "Every page must render through src/layouts/BaseLayout.astro, which carries the tag."
+            exit 1
+          fi
+          echo "GA4 tag present on all $(find dist -name '*.html' | wc -l) pages."
+
       # Written into dist/ so it ships with the site. The post-deploy check reads
       # it back over HTTP to prove these exact files are the ones being served.
       - name: Stamp the build
