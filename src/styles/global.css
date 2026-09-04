@@ -2139,6 +2139,38 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
     .lightbox-figure { transition: none; }
 }
 
+/* ---- 404 ---------------------------------------------------------------- */
+
+.notfound { padding: 9rem 2rem 5rem; background: var(--bg-light, #f7f8f9); }
+.notfound-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+.notfound-code {
+    margin: 0; font-size: clamp(4rem, 14vw, 7.5rem); font-weight: 500; line-height: 1;
+    color: var(--accent); opacity: 0.35;
+}
+.notfound h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 500; color: var(--primary); margin: 0.4rem 0 0.9rem; }
+.notfound-lead { color: var(--text-light); max-width: 52ch; margin: 0 auto 2rem; line-height: 1.6; }
+.notfound-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3.5rem; }
+
+.notfound-cols {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem;
+    text-align: left; max-width: 700px; margin: 0 auto;
+}
+.notfound-col h2 {
+    font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--success); margin-bottom: 0.9rem;
+}
+.notfound-col ul { list-style: none; padding: 0; margin: 0; }
+.notfound-col li { margin-bottom: 0.5rem; }
+.notfound-col a { color: var(--primary); text-decoration: none; font-size: 0.94rem; }
+.notfound-col a:hover { color: var(--accent-dark); text-decoration: underline; }
+.notfound-call { margin-top: 1.2rem; color: var(--text-light); font-size: 0.9rem; line-height: 1.6; }
+.notfound-call a { color: var(--primary); font-weight: 500; text-decoration: none; }
+
+@media (max-width: 640px) {
+    .notfound { padding: 7rem 1.5rem 3.5rem; }
+    .notfound-cols { grid-template-columns: 1fr; gap: 2rem; }
+}
+
 /* ---- Site search -------------------------------------------------------- */
 
 .nav-search-toggle {
