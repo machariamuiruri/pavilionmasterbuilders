@@ -5,11 +5,11 @@ export const offices = [
   {
     name: "Nairobi Office", short: "Nairobi", address: "Vision Plaza, Mombasa Road",
     phones: [{ tel: "+254705697163", label: "+254 705 697 163" }, { tel: "+254731760545", label: "+254 731 760 545" }],
-    // Only an office carrying `map` renders one; the others omit the field.
-    // The image is composed from OpenStreetMap tiles and committed to the repo,
-    // so no tile server is contacted at runtime. Regenerating it means
-    // re-rendering at -1.32707, 36.85275 — and the attribution below the image
-    // is a licence condition, not decoration.
+    // An office renders a map only if it carries `map`, so a future branch can
+    // be added without one. The image is composed from OpenStreetMap tiles and
+    // committed to the repo, so no tile server is contacted at runtime.
+    // Regenerating it means re-rendering at -1.32707, 36.85275 — and the
+    // attribution below the image is a licence condition, not decoration.
     map: {
       // Google's documented URL format. A share.google shortlink would rot.
       url: "https://www.google.com/maps/search/?api=1&query=Vision+Plaza+Mombasa+Road+Nairobi",
@@ -18,8 +18,6 @@ export const offices = [
       height: 400,
     },
   },
-  { name: "Kisumu Office", short: "Kisumu", address: "Swan Center", phones: [{ tel: "+254781668675", label: "+254 781 668 675" }] },
-  { name: "Eldoret Office", short: "Eldoret", address: "Rupa's Business Park", phones: [{ tel: "+254781771665", label: "+254 781 771 665" }] },
 ];
 
 export const email = "info@pavilionmasterbuilders.com";

@@ -1,9 +1,6 @@
 ---
 import { offices, email } from '../data/site.js';
 const year = new Date().getFullYear();
-// First two offices sit in the "Our Offices" column, the rest under "Get In Touch"
-const primary = offices.slice(0, 2);
-const secondary = offices.slice(2);
 ---
 <footer>
   <div class="footer-content">
@@ -26,8 +23,8 @@ const secondary = offices.slice(2);
     </div>
 
     <div class="footer-section footer-gold">
-      <h3>Our Offices</h3>
-      {primary.map((o, i) => (
+      <h3>{offices.length > 1 ? 'Our Offices' : 'Our Office'}</h3>
+      {offices.map((o, i) => (
         <p style={i > 0 ? 'margin-top: 0.9rem;' : undefined}>
           <strong>{o.short}</strong><br />{o.address}<br />
           {o.phones.map((p, pi) => (
@@ -40,14 +37,6 @@ const secondary = offices.slice(2);
     <div class="footer-section footer-gold">
       <h3>Get In Touch</h3>
       <p><a href={`mailto:${email}`}>{email}</a></p>
-      {secondary.map((o) => (
-        <p style="margin-top: 0.9rem;">
-          <strong>{o.short}</strong><br />{o.address}<br />
-          {o.phones.map((p, pi) => (
-            <>{pi > 0 && ' / '}<a href={`tel:${p.tel}`}>{p.label}</a></>
-          ))}
-        </p>
-      ))}
     </div>
   </div>
 
