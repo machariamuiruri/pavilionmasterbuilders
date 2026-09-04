@@ -30,13 +30,50 @@ jobs:
           PUBLIC_WEB3FORMS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
         run: npm run build
 
-      - name: Fail if the contact form key is missing
+      # A placeholder is only the most obvious way for the form to ship dead.
+      # Checking for that string alone passes anything else -- a form that
+      # rendered no key at all, or one carrying a value that never came from
+      # the secret. So assert what the output actually contains.
+      #
+      # Note what this cannot do: the build reads PUBLIC_WEB3FORMS_KEY and this
+      # compares against the same value, so the two always agree. It proves the
+      # key reached the HTML, not that the key is the one you meant. Rotating
+      # the secret without redeploying is invisible here by construction -- the
+      # live check after the upload is what covers that.
+      - name: Fail if the contact form is not wired to the configured key
+        env:
+          EXPECTED_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
         run: |
           if grep -rq 'YOUR_WEB3FORMS_ACCESS_KEY' dist/; then
             echo "::error::Built output still contains the placeholder Web3Forms key."
             echo "Set the PUBLIC_WEB3FORMS_KEY repository secret. Refusing to deploy a dead contact form."
             exit 1
           fi
+
+          if [ -z "$(printf '%s' "$EXPECTED_KEY" | tr -d '[:space:]')" ]; then
+            echo "::error::PUBLIC_WEB3FORMS_KEY is unset or empty, so the form would ship without a key."
+            exit 1
+          fi
+
+          # Every access_key rendered anywhere in the output, deduplicated.
+          mapfile -t keys < <(grep -rho 'name="access_key" value="[^"]*"' dist/ \
+            | sed 's/.*value="\([^"]*\)".*/\1/' | sort -u)
+
+          if [ "${#keys[@]}" -eq 0 ]; then
+            echo "::error::No access_key field anywhere in dist/ — the contact form did not render one."
+            echo "Either the form lost its hidden field or PUBLIC_WEB3FORMS_KEY never reached the build."
+            exit 1
+          fi
+
+          for k in "${keys[@]}"; do
+            if [ "$k" != "$EXPECTED_KEY" ]; then
+              echo "::error::A contact form in dist/ carries a key that is not PUBLIC_WEB3FORMS_KEY."
+              echo "Most likely a key was hardcoded in a component instead of read from the env var."
+              exit 1
+            fi
+          done
+
+          echo "Contact form wired to the configured Web3Forms key (${#keys[@]} distinct key checked)."
 
       # Every page carries the GA4 tag because they all render through
       # BaseLayout.astro. That is a convention, not a guarantee -- a new page that
@@ -59,9 +96,14 @@ jobs:
         run: echo "$GITHUB_SHA" > dist/deploy-stamp.txt
 
       # An FTP account pointed at the wrong folder uploads every file happily and
-      # leaves the site unchanged, which looks identical to success. The site sits
-      # behind a JS bot-challenge so CI can't verify over HTTP -- instead, look at
+      # leaves the site unchanged, which looks identical to success. So look at
       # the target before writing: public_html always already contains the site.
+      #
+      # This used to be the only defence, on the belief that a JS bot-challenge
+      # made HTTP checks impossible from CI. Plain requests do get through --
+      # /deploy-stamp.txt reads back fine -- so there is now also a live check
+      # after the upload. Keep both: this one catches a bad target before any
+      # files move, the other catches everything else afterwards.
       - name: Pre-flight — confirm the FTP target is public_html
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
@@ -108,4 +150,66 @@ jobs:
             **/.well-known/**
             **/.htaccess
             **/cgi-bin/**
+
+      # The stamp written above has been shipping since the start and nothing
+      # ever read it back. This is that missing half.
+      #
+      # An FTP upload reports success as long as it wrote *somewhere*, which
+      # looks identical to a deploy that changed nothing anyone can see. The
+      # only proof is asking the live site what it is serving. This is also the
+      # one check that can catch a secret rotated without a redeploy, because
+      # it compares the served page against the secret rather than comparing
+      # the build against itself.
+      #
+      # A previous comment claimed the site's bot challenge made HTTP checks
+      # impossible from CI. That is not true from a normal client, but a GitHub
+      # runner is a datacentre IP and may be treated differently. So the two
+      # failure modes are kept apart: if the site cannot be read at all, warn
+      # and move on -- being unable to verify is not the same as having
+      # verified something wrong. A page that *is* readable and disagrees fails
+      # the run.
+      - name: Verify the live site is serving this build
+        env:
+          EXPECTED_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
+          SITE: https://www.pavilionmasterbuilders.com
+        run: |
+          stamp=""
+          for attempt in 1 2 3 4 5; do
+            stamp=$(curl -fsS --max-time 30 "$SITE/deploy-stamp.txt" 2>/dev/null | tr -d '[:space:]') || stamp=""
+            [ "$stamp" = "$GITHUB_SHA" ] && break
+            echo "Attempt $attempt: live stamp is '${stamp:-<unreadable>}', waiting for $GITHUB_SHA"
+            sleep 15
+          done
+
+          if [ -z "$stamp" ]; then
+            echo "::warning::Could not read $SITE/deploy-stamp.txt from CI, so this build is unverified."
+            echo "The upload itself succeeded. If this warns on every run, the host is likely"
+            echo "blocking GitHub runners and this step should be dropped rather than left noisy."
+            exit 0
+          fi
+
+          if [ "$stamp" != "$GITHUB_SHA" ]; then
+            echo "::error::The live site is not serving this build."
+            echo "Expected $GITHUB_SHA but the site reports $stamp."
+            echo "The upload reported success, so suspect FTP_SERVER_DIR pointing somewhere"
+            echo "other than the docroot, or a cache in front of the origin."
+            exit 1
+          fi
+
+          live_key=$(curl -fsS --max-time 30 "$SITE/" 2>/dev/null \
+            | grep -o 'name="access_key" value="[^"]*"' \
+            | sed 's/.*value="\([^"]*\)".*/\1/' | head -1) || live_key=""
+
+          if [ -z "$live_key" ]; then
+            echo "::error::The live homepage renders no contact form access_key."
+            exit 1
+          fi
+
+          if [ "$live_key" != "$EXPECTED_KEY" ]; then
+            echo "::error::The live contact form is not carrying the configured Web3Forms key."
+            echo "Enquiries are going to whichever inbox owns the key that is actually live."
+            exit 1
+          fi
+
+          echo "Live site is serving $GITHUB_SHA with the configured contact form key."
 
