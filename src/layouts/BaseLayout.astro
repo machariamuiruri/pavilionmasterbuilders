@@ -8,7 +8,28 @@ import { offices, email } from '../data/site.js';
 const {
   title = 'Pavilion Master Builders - Premium Construction Excellence',
   description = 'Sustainable building solutions across East Africa — Decra roofing, light gauge steel, Mixx decorative cement, fiber cement, gutters and more.',
+  // Optional override for the <title> tag only, when the on-page heading is
+  // longer than a search result can show. Leave unset and `title` is used.
+  seoTitle,
 } = Astro.props;
+
+// Pages pass the bare page title; the company name is appended here rather than
+// by each caller. It used to be hardcoded in five places with two different
+// separators, which is how four posts ended up over the limit unnoticed.
+//
+// Google gives a title result roughly 60 characters before cutting it. The
+// suffix is 27 of those, so it is added only when the whole thing still fits --
+// a brand name chopped mid-word helps nobody, and on a long title the keywords
+// are worth more than the company name. Titles that already say "Pavilion
+// Master Builders" (the homepage) are left alone rather than repeating it.
+const BRAND = 'Pavilion Master Builders';
+const SUFFIX = ` | ${BRAND}`;
+const TITLE_LIMIT = 60;
+
+const baseTitle = seoTitle ?? title;
+const pageTitle = baseTitle.includes(BRAND) || baseTitle.length + SUFFIX.length > TITLE_LIMIT
+  ? baseTitle
+  : baseTitle + SUFFIX;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const origin = Astro.site.origin;
@@ -50,7 +71,7 @@ const schema = {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
+  <title>{pageTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />

@@ -16,7 +16,7 @@ const { product } = Astro.props;
 // "Explore other solutions" — the other product cards
 const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 ---
-<BaseLayout title={`${product.title} — Pavilion Master Builders`} description={product.metaDescription ?? product.tagline}>
+<BaseLayout title={product.title} description={product.metaDescription ?? product.tagline}>
   <!-- Product hero -->
   <section class="product-hero" style={`background-image: linear-gradient(135deg, rgba(26,38,52,0.86), rgba(45,90,61,0.78)), url('${product.heroImage}');`}>
     <div class="product-hero-inner">

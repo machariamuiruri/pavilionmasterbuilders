@@ -19,7 +19,7 @@ const { category, posts } = Astro.props;
 const allCategories = categoriesOf(publishedPosts(await getCollection('blog')));
 ---
 <BaseLayout
-  title={`${category.name} Articles | Pavilion Master Builders`}
+  title={`${category.name} Articles`}
   description={`Articles on ${category.name.toLowerCase()} from the Pavilion Master Builders team in Kenya. Read our guidance and request a free quote.`}
 >
   <section class="blog-hero">
