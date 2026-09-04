@@ -46,7 +46,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS
       </form>
     </div>
     <div class="offices-panel">
-      <h3>Visit Our Offices</h3>
+      <h3>{offices.length > 1 ? 'Visit Our Offices' : 'Visit Our Office'}</h3>
       {offices.map((o) => (
         <div class="office-card">
           <h4>{o.name}</h4>
