@@ -1,5 +1,8 @@
 ---
 title: "What Is Mixx Cement? Kenya's New Decorative Micro-Cement Finish, Explained"
+# The heading above earns its length on the page, but search results cut off
+# around 60 characters. This is the shorter version search sees instead.
+seoTitle: "What Is Mixx Cement? Kenya's Micro-Cement Finish"
 description: "Mixx Cement is a decorative micro-cement coating now available in Kenya through Pavilion Master Builders. Here's what it is, how it's applied, and where it works best."
 pubDate: 2026-08-30
 category: "Finishes"

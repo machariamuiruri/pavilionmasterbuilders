@@ -10,6 +10,11 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    // Optional shorter title for the <title> tag and search results only; the
+    // heading on the page stays `title`. Use it when a heading worth keeping
+    // runs past the ~60 characters Google will show, so the post can have a
+    // full heading without losing the end of it in search.
+    seoTitle: z.string().optional(),
     // Doubles as the listing excerpt and the page's meta description.
     description: z.string(),
     pubDate: z.coerce.date(),
