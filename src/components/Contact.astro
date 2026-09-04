@@ -54,6 +54,22 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS
           {o.phones.map((p, pi) => (
             <>{pi > 0 && ' / '}<a href={`tel:${p.tel}`}>{p.label}</a></>
           ))}
+          {o.map && (
+            <figure class="office-map">
+              <a href={o.map.url} target="_blank" rel="noopener noreferrer"
+                 aria-label={`Open ${o.address} in Google Maps`}>
+                <img src={o.map.image} width={o.map.width} height={o.map.height}
+                     loading="lazy" decoding="async"
+                     alt={`Map showing the ${o.name} at ${o.address}`} />
+              </a>
+              {/* Required by the ODbL licence covering the OpenStreetMap tiles
+                  this image was rendered from. Alt text would not satisfy it. */}
+              <figcaption>
+                &copy; <a href="https://www.openstreetmap.org/copyright"
+                          target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>
+              </figcaption>
+            </figure>
+          )}
         </div>
       ))}
       <div class="contact-email-row">Prefer email? <a href={`mailto:${email}`}>{email}</a></div>
