@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { offices, navLinks } from '../data/site.js';
+
+// The old WordPress URLs -- /services/, /shop/, /my-account/ -- are still
+// indexed and now land here, so this page has to do the job those pages did:
+// send people on to what they were actually looking for. A bare "not found"
+// would waste the visit.
+//
+// The product list and the phone number are pulled from src/data/site.js so a
+// new product or a changed number reaches this page like every other.
+const solutions = navLinks.find((l) => l.label === 'Solutions')?.dropdown ?? [];
+const phone = offices[0].phones[0];
+---
+<BaseLayout
+  title="Page Not Found — Pavilion Master Builders"
+  description="That page has moved or no longer exists. Browse our roofing, steel and cement solutions, or get in touch with our Nairobi office."
+>
+  <section class="notfound">
+    <div class="notfound-inner">
+      <p class="notfound-code" aria-hidden="true">404</p>
+      <h1>We can&rsquo;t find that page</h1>
+      <p class="notfound-lead">
+        Sorry about that. The page has either moved or no longer exists &mdash; our site was
+        rebuilt recently, so some older links no longer work.
+      </p>
+
+      <div class="notfound-actions">
+        <a class="btn-primary" href="/">Go to the homepage</a>
+        <a class="btn-secondary" href="/#contact">Contact us</a>
+      </div>
+
+      <div class="notfound-cols">
+        <div class="notfound-col">
+          <h2>Our solutions</h2>
+          <ul>
+            {solutions.map((s) => (
+              <li><a href={s.href}>{s.label}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div class="notfound-col">
+          <h2>Elsewhere on the site</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#products">All solutions</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+          <p class="notfound-call">
+            Or just call the Nairobi office on <a href={`tel:${phone.tel}`}>{phone.label}</a>
+            and we&rsquo;ll point you the right way.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
