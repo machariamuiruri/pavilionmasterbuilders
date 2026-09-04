@@ -1,5 +1,5 @@
 ---
-import { offices, email } from '../data/site.js';
+import { offices, email, socials } from '../data/site.js';
 const year = new Date().getFullYear();
 ---
 <footer>
@@ -14,12 +14,16 @@ const year = new Date().getFullYear();
         </span>
       </a>
       <p>Pavilion Master Builders is East Africa's premier sustainable construction provider. Quality. Innovation. Excellence. Every project, every time.</p>
-      <div class="social-links">
-        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-      </div>
+      {socials.length > 0 && (
+        <div class="social-links">
+          {socials.map((s) => (
+            <a href={s.url} target="_blank" rel="noopener noreferrer"
+               aria-label={`Pavilion Master Builders on ${s.name}`}>
+              <i class={`fab ${s.icon}`} aria-hidden="true"></i>
+            </a>
+          ))}
+        </div>
+      )}
     </div>
 
     <div class="footer-section footer-gold">
