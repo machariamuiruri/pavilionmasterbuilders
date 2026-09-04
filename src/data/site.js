@@ -22,6 +22,23 @@ export const offices = [
 
 export const email = "info@pavilionmasterbuilders.com";
 
+// Footer social links. The footer renders nothing at all when this is empty,
+// so an account can be pulled by deleting its line.
+//
+// URLs are the canonical profile addresses, deliberately not the share links
+// the accounts hand out: those carry tracking parameters (mibextid,
+// is_from_webapp) and, in Facebook's case, are a redirect to the URL below.
+//
+// fa-x-twitter needs Font Awesome >= 6.4.2 — it does not exist in 6.4.0 and
+// renders as an empty box there. See the CDN pin in BaseLayout.astro.
+export const socials = [
+  { name: "LinkedIn", url: "https://www.linkedin.com/company/pavilion-master-builders-ltd/", icon: "fa-linkedin" },
+  { name: "Instagram", url: "https://www.instagram.com/pavilionmasterbuilders/", icon: "fa-instagram" },
+  { name: "Facebook", url: "https://www.facebook.com/people/Pavilion-Master-Builders-Ltd/61579824421644/", icon: "fa-facebook" },
+  { name: "X", url: "https://x.com/PMB_limited", icon: "fa-x-twitter" },
+  { name: "TikTok", url: "https://www.tiktok.com/@pavilionmasterbuilders", icon: "fa-tiktok" },
+];
+
 // WhatsApp deep link (primary Nairobi line)
 export const whatsapp = "https://wa.me/254705697163?text=Hello%20Pavilion%20Master%20Builders%2C%20I%27d%20like%20to%20ask%20about%20your%20construction%20services.";
 

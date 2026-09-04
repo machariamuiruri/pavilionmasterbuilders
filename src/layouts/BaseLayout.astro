@@ -59,7 +59,10 @@ const schema = {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- 6.7.2, not 6.4.0: the X logo (fa-x-twitter) arrived in 6.4.2 and renders
+       as an empty box on anything older. Every icon the site already used is
+       present in this release, and it is the smaller file. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
   <!-- TODO: Replace TODO with the Search Console verification token, then verify the property. -->
   <meta name="google-site-verification" content="TODO" />
