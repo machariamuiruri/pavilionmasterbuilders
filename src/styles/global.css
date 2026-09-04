@@ -2015,10 +2015,27 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
     /* Only opacity and transform animate -- both run on the compositor, so
        opening never triggers layout or paint on the page underneath. */
     opacity: 0;
-    transition: opacity 0.25s ease;
+    /* The overlay is built once and left in the DOM, so a closed one has to be
+       taken out of hit testing and the tab order -- otherwise it sits invisible
+       over the whole page and eats every subsequent click.
+
+       pointer-events carries the click fix on its own: it is not transitioned,
+       so it applies the instant the class is dropped, whatever the fade is
+       doing. visibility then takes the overlay out of the tab order, delayed so
+       the photo does not blink out before it has faded. Deliberately not the
+       only guard -- a transition that never advances, as happens in a throttled
+       background tab, would leave the overlay swallowing clicks again. */
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
 
-.lightbox.open { opacity: 1; }
+.lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity 0.25s ease;
+}
 
 .lightbox-figure {
     margin: 0;
