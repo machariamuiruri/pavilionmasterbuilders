@@ -109,8 +109,8 @@ export const testimonials = [
 ];
 
 export const whyChoose = [
-  { icon: "\uD83C\uDFC6", title: "20+ Years Expertise", desc: "Over two decades of proven excellence delivering exceptional construction solutions across East Africa." },
-  { icon: "\u2699\uFE0F", title: "Quality Assured", desc: "Licensed, insured, and guaranteed work. Premium materials and certified professionals on every project." },
-  { icon: "\u26A1", title: "Fast & Reliable", desc: "Same-day consultations and efficient project completion without compromising quality standards." },
-  { icon: "\uD83D\uDCA1", title: "Modern Technology", desc: "Cutting-edge building technologies and sustainable materials for durable, eco-friendly structures." },
+  { icon: "fa-award", title: "20+ Years Expertise", desc: "Over two decades of proven excellence delivering exceptional construction solutions across East Africa." },
+  { icon: "fa-certificate", title: "Quality Assured", desc: "Licensed, insured, and guaranteed work. Premium materials and certified professionals on every project." },
+  { icon: "fa-bolt", title: "Fast & Reliable", desc: "Same-day consultations and efficient project completion without compromising quality standards." },
+  { icon: "fa-gears", title: "Modern Technology", desc: "Cutting-edge building technologies and sustainable materials for durable, eco-friendly structures." },
 ];

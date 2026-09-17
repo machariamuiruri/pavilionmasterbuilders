@@ -5,7 +5,9 @@
 //
 // A product has: slug, title, tag, tagline, heroImage, intro, highlights[],
 // and an ordered `sections` array. Supported section `type`s:
-//   feature-grid : heading, intro?, items:[{img?|icon?, title, desc?, spec?}]
+//   feature-grid : heading, intro?, items:[{img?|icon?|step?, title, desc?, spec?}]
+//                  `icon` is a Font Awesome 6 solid class name, e.g. 'fa-bolt';
+//                  `step` is a number, rendered as a numbered process stage.
 //   spec-table   : heading, intro?, columns:[], rows:[[]]
 //   colour       : heading, intro?, images:[{src, caption?}]
 //   benefits     : heading, intro?, columns?:1|2, items:[]
@@ -23,10 +25,10 @@ export const productDetails = {
     heroImage: '/assets/roofing-decra/decra-roof-example-01.jpeg',
     intro: 'Decra roofing tiles are lightweight metal roofing systems coated with natural stone chips for durability and timeless style. First developed in New Zealand in the 1950s as a stronger roofing solution, Decra combines the elegance of classic tiles with modern performance. As a Pavilion Master Builders supply, every tile is #GenuineDecra \u2014 the world\u2019s No.1 stone-coated metal roof tile.',
     highlights: [
-      { icon: '\uD83D\uDEE1\uFE0F', title: '50+ Year Lifespan', desc: 'Long life with very low maintenance.' },
-      { icon: '\uD83E\uDEB6', title: 'Lightweight & Strong', desc: 'Reduces structural load without losing strength.' },
-      { icon: '\u2600\uFE0F', title: 'Weatherproof', desc: 'Resists rust, corrosion and UV rays.' },
-      { icon: '\uD83C\uDFA8', title: 'Style Options', desc: 'Six profiles and a wide range of colours.' },
+      { icon: 'fa-hourglass-half', title: '50+ Year Lifespan', desc: 'Long life with very low maintenance.' },
+      { icon: 'fa-feather', title: 'Lightweight & Strong', desc: 'Reduces structural load without losing strength.' },
+      { icon: 'fa-cloud-sun-rain', title: 'Weatherproof', desc: 'Resists rust, corrosion and UV rays.' },
+      { icon: 'fa-palette', title: 'Style Options', desc: 'Six profiles and a wide range of colours.' },
     ],
     sections: [
       {
@@ -98,10 +100,10 @@ export const productDetails = {
     heroImage: '/assets/light-gauge-steel/lgs-04.jpeg',
     intro: 'Pavilion Master Builders has partnered with FRAMECAD\u00ae to provide light gauge steel (LGS) \u2014 an innovative building solution that meets the growing demand for alternative construction. We leverage world-class technology for intelligent, automated steel-frame design and manufacturing that delivers unparalleled project efficiency. Our automated production and pre-assembled panels significantly reduce on-site labour and construction time, while software-driven precision eliminates human error and material waste, delivering frames with superior strength and durability.',
     highlights: [
-      { icon: '\u26A1', title: 'Up to 40% Faster', desc: 'Pre-assembled panels cut on-site time.' },
-      { icon: '\uD83C\uDFAF', title: 'Precision', desc: 'Software-driven, near-zero material waste.' },
-      { icon: '\u267B\uFE0F', title: 'Sustainable', desc: 'Energy-efficient, low-waste production.' },
-      { icon: '\uD83C\uDFD7\uFE0F', title: 'Versatile', desc: 'Commercial, residential, modular & industrial.' },
+      { icon: 'fa-bolt', title: 'Up to 40% Faster', desc: 'Pre-assembled panels cut on-site time.' },
+      { icon: 'fa-bullseye', title: 'Precision', desc: 'Software-driven, near-zero material waste.' },
+      { icon: 'fa-recycle', title: 'Sustainable', desc: 'Energy-efficient, low-waste production.' },
+      { icon: 'fa-shapes', title: 'Versatile', desc: 'Commercial, residential, modular & industrial.' },
     ],
     sections: [
       {
@@ -118,10 +120,10 @@ export const productDetails = {
         type: 'feature-grid',
         heading: 'Built for Every Vision',
         items: [
-          { icon: '\uD83C\uDFE2', title: 'Commercial Structures', desc: 'High-performing office blocks, retail spaces and warehouses that combine speed with superior strength.' },
-          { icon: '\uD83C\uDFE1', title: 'Residential Buildings', desc: 'Sleek, long-lasting homes that stand strong against time and the elements.' },
-          { icon: '\uD83E\uDDF1', title: 'Modular Construction', desc: 'Prefabricated with precision for quick installs and minimal on-site disruption.' },
-          { icon: '\uD83C\uDFED', title: 'Industrial Builds', desc: 'Heavy-duty performance with lightweight versatility \u2014 perfect for factories and storage units.' },
+          { icon: 'fa-building', title: 'Commercial Structures', desc: 'High-performing office blocks, retail spaces and warehouses that combine speed with superior strength.' },
+          { icon: 'fa-house', title: 'Residential Buildings', desc: 'Sleek, long-lasting homes that stand strong against time and the elements.' },
+          { icon: 'fa-cubes', title: 'Modular Construction', desc: 'Prefabricated with precision for quick installs and minimal on-site disruption.' },
+          { icon: 'fa-industry', title: 'Industrial Builds', desc: 'Heavy-duty performance with lightweight versatility \u2014 perfect for factories and storage units.' },
         ],
       },
       {
@@ -159,10 +161,10 @@ export const productDetails = {
     heroImage: '/assets/mixx-cement/finishes/designer-wall-bedroom.jpeg',
     intro: 'Mixx delivers the effect of Venetian plaster \u2014 a complicated, expensive, high-skill finish \u2014 with a low-cost, easy-to-apply product. While competitor products need many components, Mixx is simply one bag of cement powder and one bottle of binder, mixed 1:1, followed by a sealer. It can be applied to walls, floors, worktops and even over existing tiles, indoors or out, in wet or dry areas. Designed for Africa, water-based and classed as non-hazardous.',
     highlights: [
-      { icon: '\uD83C\uDFA8', title: '24 Designer Colours', desc: 'Across three finish ranges.' },
-      { icon: '\uD83D\uDCA7', title: 'Wet & Dry', desc: 'Indoor, outdoor, showers, worktops.' },
-      { icon: '\uD83E\uDDF1', title: 'Over Existing Tiles', desc: 'Applies over most surfaces.' },
-      { icon: '\u2705', title: 'Non-Hazardous', desc: 'Water-based and easy to apply.' },
+      { icon: 'fa-palette', title: '24 Designer Colours', desc: 'Across three finish ranges.' },
+      { icon: 'fa-droplet', title: 'Wet & Dry', desc: 'Indoor, outdoor, showers, worktops.' },
+      { icon: 'fa-layer-group', title: 'Over Existing Tiles', desc: 'Applies over most surfaces.' },
+      { icon: 'fa-circle-check', title: 'Non-Hazardous', desc: 'Water-based and easy to apply.' },
     ],
     sections: [
       {
@@ -228,10 +230,10 @@ export const productDetails = {
     heroImage: '/assets/fiber-cement/fiber-cement-09.jpeg',
     intro: 'Fiber cement boards are a transformative solution for modern construction, offering a perfect blend of superior durability, low maintenance and design flexibility. They are resistant to fire, termites and weathering, and transform both interiors and exteriors \u2014 making them ideal for ceilings, wall cladding and flooring. With easy installation and minimal environmental impact, fiber cement boards enhance the quality and safety of any space while being kind to the environment.',
     highlights: [
-      { icon: '\uD83D\uDD25', title: 'Fire Resistant', desc: 'Non-combustible protection.' },
-      { icon: '\uD83D\uDC1C', title: 'Pest & Termite Proof', desc: 'Impervious to infestation.' },
-      { icon: '\uD83D\uDCA7', title: 'Water Resistant', desc: 'For wet and exterior areas.' },
-      { icon: '\uD83C\uDF3F', title: 'Asbestos-Free', desc: 'Safe and eco-friendly.' },
+      { icon: 'fa-fire-extinguisher', title: 'Fire Resistant', desc: 'Non-combustible protection.' },
+      { icon: 'fa-bug-slash', title: 'Pest & Termite Proof', desc: 'Impervious to infestation.' },
+      { icon: 'fa-umbrella', title: 'Water Resistant', desc: 'For wet and exterior areas.' },
+      { icon: 'fa-leaf', title: 'Asbestos-Free', desc: 'Safe and eco-friendly.' },
     ],
     sections: [
       {
@@ -283,10 +285,10 @@ export const productDetails = {
     heroImage: '/assets/upvc-gutters/gutters-01.jpeg',
     intro: 'Our UPVC gutters offer a durable, lightweight and cost-effective solution for effective rainwater management, featuring resistance to rust and corrosion, low maintenance requirements, and versatile designs that complement any building. Engineered for optimal performance, they ensure efficient drainage while preventing leaks and water damage. Their eco-friendly materials contribute to sustainable building practices \u2014 a smart choice for environmentally conscious projects.',
     highlights: [
-      { icon: '\uD83D\uDEE1\uFE0F', title: 'Rust-Proof', desc: 'Resistant to rust and corrosion.' },
-      { icon: '\uD83E\uDEB6', title: 'Lightweight', desc: 'Easy to handle and install.' },
-      { icon: '\uD83D\uDD27', title: 'Low Maintenance', desc: 'Fit and forget for years.' },
-      { icon: '\uD83C\uDF3F', title: 'Eco-Friendly', desc: 'Sustainable materials.' },
+      { icon: 'fa-shield-halved', title: 'Rust-Proof', desc: 'Resistant to rust and corrosion.' },
+      { icon: 'fa-feather', title: 'Lightweight', desc: 'Easy to handle and install.' },
+      { icon: 'fa-wrench', title: 'Low Maintenance', desc: 'Fit and forget for years.' },
+      { icon: 'fa-leaf', title: 'Eco-Friendly', desc: 'Sustainable materials.' },
     ],
     sections: [
       {
@@ -294,12 +296,12 @@ export const productDetails = {
         heading: 'Complete Gutter System',
         intro: 'Everything you need for a clean, reliable rainwater run \u2014 all in matching UPVC.',
         items: [
-          { icon: '\uD83D\uDCCF', title: 'Gutter & Joint Bracket', desc: 'The main channel with secure jointing brackets.' },
-          { icon: '\uD83D\uDD3D', title: 'Running Outlet', desc: 'Directs collected water into the downpipe.' },
-          { icon: '\uD83D\uDCE5', title: 'Downpipe & Clips', desc: 'Carries water down, held firm with clips.' },
-          { icon: '\uD83D\uDD00', title: 'Branch & Connector', desc: 'Joins and redirects runs around the building.' },
-          { icon: '\uD83D\uDC5F', title: 'Downpipe Shoe', desc: 'Discharges water cleanly at ground level.' },
-          { icon: '\uD83E\uDDF0', title: 'Full Fittings Range', desc: 'All components available in matching finish.' },
+          { icon: 'fa-grip-lines', title: 'Gutter & Joint Bracket', desc: 'The main channel with secure jointing brackets.' },
+          { icon: 'fa-arrow-turn-down', title: 'Running Outlet', desc: 'Directs collected water into the downpipe.' },
+          { icon: 'fa-grip-lines-vertical', title: 'Downpipe & Clips', desc: 'Carries water down, held firm with clips.' },
+          { icon: 'fa-code-branch', title: 'Branch & Connector', desc: 'Joins and redirects runs around the building.' },
+          { icon: 'fa-droplet', title: 'Downpipe Shoe', desc: 'Discharges water cleanly at ground level.' },
+          { icon: 'fa-toolbox', title: 'Full Fittings Range', desc: 'All components available in matching finish.' },
         ],
       },
       {
@@ -336,10 +338,10 @@ export const productDetails = {
     heroImage: '/assets/rust-converter/neutrarust-01.jpeg',
     intro: 'Neutrarust 661 is our advanced rust-prevention system, designed to protect and extend the life of all metal surfaces. Its innovative formula creates a powerful barrier against moisture, corrosion and environmental damage, keeping assets in pristine condition. Easy to apply and suitable for a wide variety of applications, Neutrarust 661 is the ideal choice for both industrial and residential needs \u2014 safeguarding investments and prolonging their integrity for years to come.',
     highlights: [
-      { icon: '\uD83D\uDEE1\uFE0F', title: 'Stops & Converts Rust', desc: 'Neutralises existing corrosion.' },
-      { icon: '\uD83C\uDFAF', title: 'Easy to Apply', desc: 'Straightforward on most metals.' },
-      { icon: '\uD83C\uDF0A', title: 'Marine-Grade', desc: 'Suited to harsh, wet environments.' },
-      { icon: '\uD83C\uDFED', title: 'Industrial & Residential', desc: 'One solution, many uses.' },
+      { icon: 'fa-flask', title: 'Stops & Converts Rust', desc: 'Neutralises existing corrosion.' },
+      { icon: 'fa-paint-roller', title: 'Easy to Apply', desc: 'Straightforward on most metals.' },
+      { icon: 'fa-water', title: 'Marine-Grade', desc: 'Suited to harsh, wet environments.' },
+      { icon: 'fa-industry', title: 'Industrial & Residential', desc: 'One solution, many uses.' },
     ],
     sections: [
       {
@@ -347,12 +349,12 @@ export const productDetails = {
         heading: 'Where to Use It',
         intro: 'A powerful barrier for almost any metal surface exposed to the elements.',
         items: [
-          { icon: '\uD83D\uDEA2', title: 'Ships & Marine', desc: 'Hulls, decks and marine equipment.' },
-          { icon: '\u26FD', title: 'Oil & Gas', desc: 'Installations and pipework.' },
-          { icon: '\uD83C\uDF09', title: 'Bridges', desc: 'Structural steel and railings.' },
-          { icon: '\uD83D\uDE97', title: 'Vehicles', desc: 'Chassis, bodywork and trailers.' },
-          { icon: '\uD83E\uDE91', title: 'Outdoor Furniture', desc: 'Gates, railings and fittings.' },
-          { icon: '\uD83C\uDFE0', title: 'Roofs', desc: 'Metal roof sheets and ridges.' },
+          { icon: 'fa-ship', title: 'Ships & Marine', desc: 'Hulls, decks and marine equipment.' },
+          { icon: 'fa-gas-pump', title: 'Oil & Gas', desc: 'Installations and pipework.' },
+          { icon: 'fa-bridge', title: 'Bridges', desc: 'Structural steel and railings.' },
+          { icon: 'fa-car', title: 'Vehicles', desc: 'Chassis, bodywork and trailers.' },
+          { icon: 'fa-chair', title: 'Outdoor Furniture', desc: 'Gates, railings and fittings.' },
+          { icon: 'fa-house-chimney', title: 'Roofs', desc: 'Metal roof sheets and ridges.' },
         ],
       },
       {
@@ -390,10 +392,10 @@ export const productDetails = {
     heroImage: '/assets/alternative-building/alt-building-toa-blue-roof.jpeg',
     intro: 'At Pavilion Master Builders, we offer affordable and sustainable eco-friendly housing solutions that prioritise quality while ensuring a rapid construction turnaround. Our innovative approach combines advanced building technologies and sustainable materials to deliver durable structures that are both environmentally friendly and cost-effective. We understand the urgency of construction needs \u2014 our solutions quickly deliver essential buildings, all in record time, built to withstand the test of time and adverse weather.',
     highlights: [
-      { icon: '\u26A1', title: 'Record Time', desc: 'Rapid construction turnaround.' },
-      { icon: '\u267B\uFE0F', title: 'Eco-Friendly', desc: 'Sustainable materials throughout.' },
-      { icon: '\uD83D\uDCA1', title: 'Energy Efficient', desc: 'Lower utility costs by design.' },
-      { icon: '\uD83C\uDFDB\uFE0F', title: 'Built to Last', desc: 'Durable in adverse weather.' },
+      { icon: 'fa-bolt', title: 'Record Time', desc: 'Rapid construction turnaround.' },
+      { icon: 'fa-recycle', title: 'Eco-Friendly', desc: 'Sustainable materials throughout.' },
+      { icon: 'fa-lightbulb', title: 'Energy Efficient', desc: 'Lower utility costs by design.' },
+      { icon: 'fa-landmark', title: 'Built to Last', desc: 'Durable in adverse weather.' },
     ],
     sections: [
       {
@@ -401,12 +403,12 @@ export const productDetails = {
         heading: 'What We Build',
         intro: 'A full range of essential buildings, delivered quickly without compromising quality.',
         items: [
-          { icon: '\uD83C\uDFE1', title: 'Homes', desc: 'Comfortable, durable, energy-efficient housing.' },
-          { icon: '\uD83C\uDFEB', title: 'Schools', desc: 'Safe, fast-to-build learning spaces.' },
-          { icon: '\u26EA', title: 'Churches', desc: 'Community buildings of any scale.' },
-          { icon: '\uD83C\uDFD5\uFE0F', title: 'Cabins', desc: 'Getaway and hospitality units.' },
-          { icon: '\uD83C\uDFE8', title: 'Hotels', desc: 'Guest accommodation at speed.' },
-          { icon: '\uD83C\uDFE5', title: 'Hospitals', desc: 'Essential healthcare facilities in record time.' },
+          { icon: 'fa-house', title: 'Homes', desc: 'Comfortable, durable, energy-efficient housing.' },
+          { icon: 'fa-school', title: 'Schools', desc: 'Safe, fast-to-build learning spaces.' },
+          { icon: 'fa-church', title: 'Churches', desc: 'Community buildings of any scale.' },
+          { icon: 'fa-campground', title: 'Cabins', desc: 'Getaway and hospitality units.' },
+          { icon: 'fa-hotel', title: 'Hotels', desc: 'Guest accommodation at speed.' },
+          { icon: 'fa-hospital', title: 'Hospitals', desc: 'Essential healthcare facilities in record time.' },
         ],
       },
       {
@@ -449,10 +451,10 @@ export const productDetails = {
     ctaHeading: 'Ready to Build Your A-Frame?',
     ctaBody: 'Tell us about your site and vision, and we’ll put together a free consultation and quote.',
     highlights: [
-      { icon: '⚡', title: 'Faster to Build', desc: 'Prefabricated steel goes up in a fraction of the time.' },
-      { icon: '🛡️', title: 'Termite & Rot Proof', desc: 'Galvanized steel shrugs off pests and damp.' },
-      { icon: '🏔️', title: 'Soaring Interiors', desc: 'Open plans, lofts and glazed gable ends.' },
-      { icon: '🧰', title: 'Low Maintenance', desc: 'No repainting, no seasonal pest treatment.' },
+      { icon: 'fa-bolt', title: 'Faster to Build', desc: 'Prefabricated steel goes up in a fraction of the time.' },
+      { icon: 'fa-bug-slash', title: 'Termite & Rot Proof', desc: 'Galvanized steel shrugs off pests and damp.' },
+      { icon: 'fa-expand', title: 'Soaring Interiors', desc: 'Open plans, lofts and glazed gable ends.' },
+      { icon: 'fa-wrench', title: 'Low Maintenance', desc: 'No repainting, no seasonal pest treatment.' },
     ],
     sections: [
       {
@@ -486,11 +488,11 @@ export const productDetails = {
         heading: 'Our Process',
         intro: 'From first site visit to handover, five clear stages.',
         items: [
-          { icon: '1️⃣', title: 'Consultation & Site Assessment', desc: 'We visit your site, understand your goals, and assess access, terrain and foundation needs.' },
-          { icon: '2️⃣', title: 'Design & Engineering', desc: 'Your A-Frame is designed and structurally engineered around your chosen size, layout and site.' },
-          { icon: '3️⃣', title: 'Fabrication', desc: 'Steel components are fabricated off-site to precise specifications.' },
-          { icon: '4️⃣', title: 'On-Site Assembly', desc: 'The frame is erected on-site, ready for roofing, cladding and finishing.' },
-          { icon: '5️⃣', title: 'Handover', desc: 'Your A-Frame is completed, inspected and handed over ready to use.' },
+          { step: 1, title: 'Consultation & Site Assessment', desc: 'We visit your site, understand your goals, and assess access, terrain and foundation needs.' },
+          { step: 2, title: 'Design & Engineering', desc: 'Your A-Frame is designed and structurally engineered around your chosen size, layout and site.' },
+          { step: 3, title: 'Fabrication', desc: 'Steel components are fabricated off-site to precise specifications.' },
+          { step: 4, title: 'On-Site Assembly', desc: 'The frame is erected on-site, ready for roofing, cladding and finishing.' },
+          { step: 5, title: 'Handover', desc: 'Your A-Frame is completed, inspected and handed over ready to use.' },
         ],
       },
       {
@@ -514,20 +516,20 @@ export const productDetails = {
     heroImage: '/assets/reroofing-cleaning/reroof-clean-01.jpeg',
     intro: 'Your roof is not just a protective barrier \u2014 it\u2019s a vital component of your home\u2019s structure and aesthetic appeal. Whether you\u2019re dealing with wear and tear, leaks, or simply looking to upgrade, our re-roofing services are designed to enhance the safety, efficiency and beauty of your property. And because a clean roof is vital for longevity, our professional roof-cleaning service removes debris, moss and algae using eco-friendly solutions \u2014 keeping your roof in excellent condition and preventing deterioration.',
     highlights: [
-      { icon: '\uD83D\uDD04', title: 'Re-roofing', desc: 'Upgrades and full replacements.' },
-      { icon: '\uD83E\uDDFC', title: 'Roof Cleaning', desc: 'Eco-friendly deep cleaning.' },
-      { icon: '\uD83C\uDF3F', title: 'Eco-Friendly', desc: 'Safe, non-toxic solutions.' },
-      { icon: '\uD83D\uDEE0\uFE0F', title: 'Leak Repair', desc: 'Fix wear before it spreads.' },
+      { icon: 'fa-rotate', title: 'Re-roofing', desc: 'Upgrades and full replacements.' },
+      { icon: 'fa-spray-can-sparkles', title: 'Roof Cleaning', desc: 'Eco-friendly deep cleaning.' },
+      { icon: 'fa-leaf', title: 'Eco-Friendly', desc: 'Safe, non-toxic solutions.' },
+      { icon: 'fa-droplet-slash', title: 'Leak Repair', desc: 'Fix wear before it spreads.' },
     ],
     sections: [
       {
         type: 'feature-grid',
         heading: 'Our Services',
         items: [
-          { icon: '\uD83D\uDD04', title: 'Re-roofing & Upgrades', desc: 'Replace worn or dated roofs with modern, durable systems.' },
-          { icon: '\uD83E\uDDFC', title: 'Roof Cleaning', desc: 'Remove debris, moss and algae that damage your roof over time.' },
-          { icon: '\uD83D\uDCA7', title: 'Moss & Algae Removal', desc: 'Eco-friendly treatment that restores curb appeal.' },
-          { icon: '\uD83D\uDEE0\uFE0F', title: 'Leak & Wear Repair', desc: 'Targeted repairs that protect your home\u2019s structure.' },
+          { icon: 'fa-rotate', title: 'Re-roofing & Upgrades', desc: 'Replace worn or dated roofs with modern, durable systems.' },
+          { icon: 'fa-spray-can-sparkles', title: 'Roof Cleaning', desc: 'Remove debris, moss and algae that damage your roof over time.' },
+          { icon: 'fa-broom', title: 'Moss & Algae Removal', desc: 'Eco-friendly treatment that restores curb appeal.' },
+          { icon: 'fa-droplet-slash', title: 'Leak & Wear Repair', desc: 'Targeted repairs that protect your home\u2019s structure.' },
         ],
       },
       {
