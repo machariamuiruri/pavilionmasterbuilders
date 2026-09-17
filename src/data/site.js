@@ -69,6 +69,35 @@ export const stats = [
   { number: "100%", label: "Quality Assured" },
 ];
 
+// The modular build sequence shown on the homepage, in order. Every stage here
+// is a capability Pavilion owns outright rather than buys in — which is the
+// whole argument the section makes, so a stage belongs in this list only while
+// that stays true. The materials (fiber cement, Decra, micro-cement) appear
+// deliberately as stages of one system here, and again as standalone products
+// further down the page.
+export const buildStack = [
+  {
+    step: "01",
+    title: "Design",
+    desc: "Our in-house designer engineers the frame to your drawings, resolved to a buildable design before any steel is cut.",
+  },
+  {
+    step: "02",
+    title: "Fabricate",
+    desc: "The frame is rolled in our own Nairobi factory — cut to length, pre-punched for services and labelled for assembly, to the millimetre of the drawing.",
+  },
+  {
+    step: "03",
+    title: "Assemble",
+    desc: "Frame, fiber cement envelope and Decra roof go up dry. Nothing has to cure, so weather stops setting the programme.",
+  },
+  {
+    step: "04",
+    title: "Finish & hand over",
+    desc: "Micro-cement finishes, gutters and fixtures complete the building — on the programme agreed back at design stage.",
+  },
+];
+
 export const services = [
   "Decra Roofing", "Light Gauge Steel", "Mixx Cement", "Fiber Cement Boards",
   "UPVC Gutters", "Rust Converter (Neutrarust)", "Alternative Building",
@@ -109,8 +138,8 @@ export const testimonials = [
 ];
 
 export const whyChoose = [
-  { icon: "\uD83C\uDFC6", title: "20+ Years Expertise", desc: "Over two decades of proven excellence delivering exceptional construction solutions across East Africa." },
-  { icon: "\u2699\uFE0F", title: "Quality Assured", desc: "Licensed, insured, and guaranteed work. Premium materials and certified professionals on every project." },
-  { icon: "\u26A1", title: "Fast & Reliable", desc: "Same-day consultations and efficient project completion without compromising quality standards." },
-  { icon: "\uD83D\uDCA1", title: "Modern Technology", desc: "Cutting-edge building technologies and sustainable materials for durable, eco-friendly structures." },
+  { icon: "fa-award", title: "20+ Years Expertise", desc: "Over two decades of proven excellence delivering exceptional construction solutions across East Africa." },
+  { icon: "fa-certificate", title: "Quality Assured", desc: "Licensed, insured, and guaranteed work. Premium materials and certified professionals on every project." },
+  { icon: "fa-bolt", title: "Fast & Reliable", desc: "Same-day consultations and efficient project completion without compromising quality standards." },
+  { icon: "fa-gears", title: "Modern Technology", desc: "Cutting-edge building technologies and sustainable materials for durable, eco-friendly structures." },
 ];

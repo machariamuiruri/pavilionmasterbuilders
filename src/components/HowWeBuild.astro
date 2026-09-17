@@ -1,0 +1,30 @@
+---
+// The homepage's argument for the modular positioning: the four stages of a
+// build, each one owned in-house. It sits directly after the stats band and
+// before the products grid, so a visitor meets the system before the catalogue.
+import { buildStack } from '../data/site.js';
+---
+<section class="stack" id="how-we-build">
+  <div class="stack-inner">
+    <div class="section-header">
+      <h2>One Contractor, Frame to Handover</h2>
+      <p>Modular only delivers on its promise when the chain isn&rsquo;t split across four suppliers who each blame the last. We own every link of ours.</p>
+    </div>
+
+    <ol class="stack-grid">
+      {buildStack.map((s) => (
+        <li class="stack-step">
+          <span class="stack-num" aria-hidden="true">{s.step}</span>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+        </li>
+      ))}
+    </ol>
+
+    <p class="stack-note">
+      The factory is ours, and so is the designer who draws what it builds. Nothing about your
+      frame waits in another company&rsquo;s queue, which is why we can give you a date and a
+      price at design stage and hold both.
+    </p>
+  </div>
+</section>

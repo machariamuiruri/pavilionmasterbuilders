@@ -1142,7 +1142,9 @@
         }
 
         .why-icon {
-            font-size: 3.5rem;
+            font-size: 2.6rem;
+            line-height: 1;
+            color: var(--accent);
             margin-bottom: 1.5rem;
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -1715,7 +1717,7 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
     box-shadow: 0 15px 40px rgba(45, 90, 61, 0.08); transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .highlight-card:hover { transform: translateY(-6px); box-shadow: 0 25px 55px rgba(45, 90, 61, 0.15); }
-.highlight-icon { font-size: 2.4rem; margin-bottom: 0.8rem; }
+.highlight-icon { font-size: 1.9rem; line-height: 1; color: var(--accent-dark); margin-bottom: 0.9rem; }
 .highlight-card h3 { font-size: 1.15rem; color: var(--primary); font-weight: 500; margin-bottom: 0.4rem; }
 .highlight-card p { color: var(--text-light); font-size: 0.92rem; line-height: 1.5; }
 
@@ -1737,7 +1739,22 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
 .pfeature-photo { height: 200px; overflow: hidden; }
 .pfeature-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
 .pfeature-card:hover .pfeature-photo img { transform: scale(1.07); }
-.pfeature-icon { font-size: 2.6rem; padding: 1.8rem 1.8rem 0; }
+.pfeature-icon { font-size: 2rem; line-height: 1; color: var(--accent-dark); padding: 1.8rem 1.8rem 0; }
+
+/* Numbered stage marker for process feature-grids (items with `step`). */
+.pfeature-step {
+    width: 2.75rem;
+    height: 2.75rem;
+    margin: 1.8rem 1.8rem 0;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--accent-light);
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .pfeature-body { padding: 1.6rem 1.8rem; flex: 1; display: flex; flex-direction: column; }
 .pfeature-body h3 { font-size: 1.25rem; color: var(--primary); font-weight: 500; margin-bottom: 0.5rem; }
 .pfeature-body p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; flex: 1; }
@@ -2334,4 +2351,72 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
     .site-search,
     .site-search-inner { transition: none; }
+}
+
+/* ---- How we build (the modular stack) ---------------------------------- */
+/* Sits between the stats band and the products grid, so a visitor meets the
+   system before the catalogue. The numbers are decorative: the <ol> already
+   carries the ordering to a screen reader, which is why .stack-num is
+   aria-hidden in the markup rather than being read out twice. */
+
+.stack {
+    padding: 7rem 4rem;
+    background: var(--surface);
+}
+.stack-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.stack-step {
+    padding-top: 2.2rem;
+    border-top: 2px solid rgba(45, 90, 61, 0.18);
+}
+.stack-num {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--accent-dark);
+    margin-bottom: 0.9rem;
+}
+.stack-step h3 {
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+}
+.stack-step p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+}
+.stack-note {
+    max-width: 780px;
+    margin: 4rem auto 0;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(26, 38, 52, 0.1);
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--text);
+}
+
+@media (max-width: 1100px) {
+    .stack-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 2rem; }
+}
+@media (max-width: 900px) {
+    .stack { padding: 4.5rem 2rem; }
+}
+@media (max-width: 600px) {
+    .stack { padding: 3.5rem 1.5rem; }
+    .stack-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .stack-note { margin-top: 3rem; padding-top: 2rem; font-size: 1rem; }
 }
