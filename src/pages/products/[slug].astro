@@ -42,7 +42,7 @@ const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
       <div class="highlight-grid">
         {product.highlights.map((h) => (
           <div class="highlight-card">
-            <div class="highlight-icon">{h.icon}</div>
+            <div class="highlight-icon"><i class={`fas ${h.icon}`} aria-hidden="true"></i></div>
             <h3>{h.title}</h3>
             <p>{h.desc}</p>
           </div>

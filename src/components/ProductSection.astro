@@ -14,7 +14,9 @@ const { block, alt = false } = Astro.props;
           <div class="pfeature-card">
             {it.img
               ? <div class="pfeature-photo"><img src={it.img} alt={it.title} loading="lazy" /></div>
-              : <div class="pfeature-icon">{it.icon}</div>}
+              : it.step
+                ? <div class="pfeature-step" aria-hidden="true">{it.step}</div>
+                : <div class="pfeature-icon"><i class={`fas ${it.icon}`} aria-hidden="true"></i></div>}
             <div class="pfeature-body">
               <h3>{it.title}</h3>
               {it.desc && <p>{it.desc}</p>}
