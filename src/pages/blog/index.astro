@@ -25,9 +25,9 @@ const categories = categoriesOf(posts);
     {categories.length > 0 && (
       <div class="blog-categories">
         <span class="blog-categories-label">Browse:</span>
-        <a href="/blog" class="blog-chip active">All ({posts.length})</a>
+        <a href="/blog/" class="blog-chip active">All ({posts.length})</a>
         {categories.map((c) => (
-          <a href={`/blog/category/${c.slug}`} class="blog-chip">{c.name} ({c.count})</a>
+          <a href={`/blog/category/${c.slug}/`} class="blog-chip">{c.name} ({c.count})</a>
         ))}
       </div>
     )}

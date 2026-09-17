@@ -25,7 +25,7 @@ const allCategories = categoriesOf(publishedPosts(await getCollection('blog')));
   <section class="blog-hero">
     <div class="blog-hero-inner">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a><span>/</span><a href="/blog">Blog</a><span>/</span><span>{category.name}</span>
+        <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span>{category.name}</span>
       </nav>
       <h1>{category.name}</h1>
       <p>{category.count} article{category.count === 1 ? '' : 's'} in this category.</p>
@@ -35,9 +35,9 @@ const allCategories = categoriesOf(publishedPosts(await getCollection('blog')));
   <section class="blog-listing">
     <div class="blog-categories">
       <span class="blog-categories-label">Browse:</span>
-      <a href="/blog" class="blog-chip">All</a>
+      <a href="/blog/" class="blog-chip">All</a>
       {allCategories.map((c) => (
-        <a href={`/blog/category/${c.slug}`} class={`blog-chip${c.slug === category.slug ? ' active' : ''}`}>
+        <a href={`/blog/category/${c.slug}/`} class={`blog-chip${c.slug === category.slug ? ' active' : ''}`}>
           {c.name} ({c.count})
         </a>
       ))}

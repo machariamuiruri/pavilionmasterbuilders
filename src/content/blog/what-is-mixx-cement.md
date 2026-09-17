@@ -145,7 +145,7 @@ so the difference between the two is obvious in a way it never is on screen.
 If you are weighing it against repainting or re-tiling, that comparison takes ten minutes
 in person and will tell you more than any specification sheet.
 
-[Explore the full Mixx Cement range](/products/mixx-cement) — the finishes, the colour
+[Explore the full Mixx Cement range](/products/mixx-cement/) — the finishes, the colour
 options, the sealers and the application guide — or
 [get in touch for a quote](/#contact) and we will talk through what it would take on your
 particular surfaces.

@@ -72,7 +72,7 @@ export async function GET() {
   // Product pages
   for (const product of Object.values(productDetails)) {
     docs.push({
-      u: `/products/${product.slug}`,
+      u: `/products/${product.slug}/`,
       t: product.title,
       k: product.tag || 'Solution',
       d: product.tagline || product.metaDescription || '',
@@ -88,7 +88,7 @@ export async function GET() {
   const posts = publishedPosts(await getCollection('blog'));
   for (const post of posts) {
     docs.push({
-      u: `/blog/${post.slug}`,
+      u: `/blog/${post.slug}/`,
       t: post.data.title,
       k: post.data.category,
       d: post.data.description,
@@ -101,7 +101,7 @@ export async function GET() {
   const categories = [...new Set(posts.map((post) => post.data.category))];
   for (const category of categories) {
     docs.push({
-      u: `/blog/category/${slugify(category)}`,
+      u: `/blog/category/${slugify(category)}/`,
       t: `${category} articles`,
       k: 'Category',
       d: `Articles filed under ${category}.`,

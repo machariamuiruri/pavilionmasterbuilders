@@ -445,7 +445,7 @@ export const productDetails = {
     tagline: 'Iconic design. Steel-framed strength. Built for how you’ll actually use it.',
     metaDescription: 'Steel-framed A-Frame homes and cabins built for speed, strength, and Kenya’s climate. Explore our A-Frame structures and request a free quote from Pavilion Master Builders.',
     heroImage: '/assets/a-frame-structures/a-frame-progress-2.jpeg',
-    intro: 'The A-Frame has long been the shape of the classic retreat — steep, symmetrical rooflines that shed rain, flood the interior with light, and make a small footprint feel dramatic. We build ours in light-gauge steel, not timber. That means faster construction, no risk of termite damage or rot, and a frame engineered to hold its shape for decades with minimal upkeep. It’s built on the same <a href="/products/light-gauge-steel">light-gauge steel framing system</a> behind our other steel structures.',
+    intro: 'The A-Frame has long been the shape of the classic retreat — steep, symmetrical rooflines that shed rain, flood the interior with light, and make a small footprint feel dramatic. We build ours in light-gauge steel, not timber. That means faster construction, no risk of termite damage or rot, and a frame engineered to hold its shape for decades with minimal upkeep. It’s built on the same <a href="/products/light-gauge-steel/">light-gauge steel framing system</a> behind our other steel structures.',
     ctaHeading: 'Ready to Build Your A-Frame?',
     ctaBody: 'Tell us about your site and vision, and we’ll put together a free consultation and quote.',
     highlights: [

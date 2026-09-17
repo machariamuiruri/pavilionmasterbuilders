@@ -11,6 +11,11 @@ const {
   // Optional override for the <title> tag only, when the on-page heading is
   // longer than a search result can show. Leave unset and `title` is used.
   seoTitle,
+  // Keeps a page out of the index. Excluding a URL from the sitemap does not do
+  // this -- it only means the URL is not volunteered, and Google indexes plenty
+  // it was never handed. `follow` is deliberate: the page should not rank, but
+  // the links on it still pass the crawler through to pages that should.
+  noindex = false,
 } = Astro.props;
 
 // Pages pass the bare page title; the company name is appended here rather than
@@ -73,7 +78,10 @@ const schema = {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{pageTitle}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  {/* A noindex page naming itself as the canonical version of something is a
+      contradiction, so the tag is emitted only where it means anything. */}
+  {!noindex && <link rel="canonical" href={canonical} />}
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.png" />
