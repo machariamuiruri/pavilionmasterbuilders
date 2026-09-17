@@ -34,7 +34,7 @@ the site did that week.
 
 ## Light gauge steel construction in Kenya
 
-The structural system is [light gauge steel framing](/products/light-gauge-steel):
+The structural system is [light gauge steel framing](/products/light-gauge-steel/):
 cold-formed sections rolled to a specific design, pre-punched for services and labelled
 for assembly.
 
@@ -53,7 +53,7 @@ That discipline is what produces the programme certainty.
 
 ## Fiber cement cladding and the dry envelope
 
-The envelope follows the same logic. [Fiber cement boards](/products/fiber-cement) fix
+The envelope follows the same logic. [Fiber cement boards](/products/fiber-cement/) fix
 directly to the steel frame, so the building is closed without curing time and without a
 wet trade sitting on the critical path.
 
@@ -69,13 +69,13 @@ interfaces being designed before anyone builds them.
 ## Roofing and finishes, in plain terms
 
 Roofing is where most owners' questions start. [Decra stone coated roofing
-tiles](/products/decra-roofing) are steel tiles with a stone chip surface, and the roof we
+tiles](/products/decra-roofing/) are steel tiles with a stone chip surface, and the roof we
 fit most often in Kenya.
 
 The appeal is simple. They are light, so they suit a steel frame and do not load the
 structure. They are weatherproof. And they are built to last fifty years and more.
 
-Inside, [Mixx decorative micro-cement](/products/mixx-cement) gives walls and floors a
+Inside, [Mixx decorative micro-cement](/products/mixx-cement/) gives walls and floors a
 smooth, seamless finish with no tiles and no grout lines. It goes over the same fiber
 cement boards used elsewhere, so a wall can be framed, clad and finished without
 switching system. Nothing to re-grout, nothing to work loose.
@@ -91,13 +91,13 @@ finishes, under one contract from our Nairobi office. The team that details the 
 details the envelope that lands on it.
 
 It is the same method behind our [alternative and eco-build
-work](/products/alternative-building) — homes, schools, hotels and hospitals delivered
+work](/products/alternative-building/) — homes, schools, hotels and hospitals delivered
 with off-site fabrication as the norm rather than as a one-off experiment.
 
 ![A steel A-frame structure erected on a raised platform among mature trees, its triangular
 frames braced and standing ready for cladding](/assets/blog/modular-a-frame-structure.webp)
 
-The [A-frame structures](/products/a-frame-structures) above are the same system in a
+The [A-frame structures](/products/a-frame-structures/) above are the same system in a
 different geometry — a shape that is slow and wasteful in blockwork, and is not once
 framing is manufactured rather than cut on site.
 

@@ -26,9 +26,9 @@ const related = relatedProducts
          of the viewport and dragged out of the document flow. -->
     <div class="blog-post-header">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a><span>/</span><a href="/blog">Blog</a><span>/</span><span>{title}</span>
+        <a href="/">Home</a><span>/</span><a href="/blog/">Blog</a><span>/</span><span>{title}</span>
       </nav>
-      <a class="blog-post-category" href={`/blog/category/${slugify(category)}`}>{category}</a>
+      <a class="blog-post-category" href={`/blog/category/${slugify(category)}/`}>{category}</a>
       <h1>{title}</h1>
       <p class="blog-post-lede">{description}</p>
       <div class="blog-post-meta">
