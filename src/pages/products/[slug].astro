@@ -21,14 +21,14 @@ const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
   <section class="product-hero" style={`background-image: linear-gradient(135deg, rgba(26,38,52,0.86), rgba(45,90,61,0.78)), url('${product.heroImage}');`}>
     <div class="product-hero-inner">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a><span>/</span><a href="/#products">Solutions</a><span>/</span><span>{product.title}</span>
+        <a href="/">Home</a><span>/</span><a href="/products/">Solutions</a><span>/</span><span>{product.title}</span>
       </nav>
       <span class="product-hero-tag">{product.tag}</span>
       <h1>{product.title}</h1>
       <p class="product-hero-tagline">{product.tagline}</p>
       <div class="product-hero-ctas">
         <a class="btn-primary" href="/#contact">Request a Quote</a>
-        <a class="btn-secondary" href="/#products">All Solutions</a>
+        <a class="btn-secondary" href="/products/">All Solutions</a>
       </div>
     </div>
   </section>

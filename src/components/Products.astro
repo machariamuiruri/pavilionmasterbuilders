@@ -10,4 +10,8 @@ import ProductCard from './ProductCard.astro';
   <div class="products-grid">
     {products.map((p) => <ProductCard {...p} />)}
   </div>
+  {/* This grid is eight cards; A-Frame has its own section below it. This link
+      is the homepage's only route to the full nine, and the main internal link
+      pointing at the /products/ index. */}
+  <p class="products-all"><a href="/products/">See all solutions <span aria-hidden="true">&rarr;</span></a></p>
 </section>

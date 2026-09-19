@@ -112,6 +112,53 @@ This is why you should never "delete everything in `public_html` and re-upload."
 are invisible in most FTP clients (they start with a dot) and losing `.well-known/` doesn't
 fail loudly — the certificate just quietly stops renewing and expires ~60 days later.
 
+### Redirects (`.htaccess`)
+
+Because the deploy excludes `.htaccess`, this file exists **only on the server** — it is not
+in git and nothing rebuilds it. If `public_html` is ever wiped, it is gone and has to be
+retyped. That is what this section is for. Edit it at cPanel → **File Manager** → `public_html`
+(turn on "show hidden files" first).
+
+Two jobs. The first is the old WordPress URLs: Google indexed `/shop/`, `/services/`,
+`/contact/` and `/my-account/` from the site that used to live here, and they 404 today. The
+second is the `www` split — both hostnames serve every page with a 200, so without a redirect
+each page exists at two addresses.
+
+HTTPS is already forced by the host. Do not add rules for it.
+
+```apache
+RewriteEngine On
+
+# --- Old WordPress URLs -----------------------------------------------------
+# These run BEFORE the www rule so legacy traffic takes one hop, not two.
+# NE is required: without it the # is escaped to %23 and the anchor breaks.
+RewriteRule ^shop/?$     https://www.pavilionmasterbuilders.com/products/ [R=301,L]
+RewriteRule ^services/?$ https://www.pavilionmasterbuilders.com/products/ [R=301,L]
+RewriteRule ^contact/?$  https://www.pavilionmasterbuilders.com/#contact  [R=301,L,NE]
+
+# Nothing on the current site corresponds to these. Redirecting a checkout page
+# to the homepage is a soft 404 — Google ignores it and leaves the old URL in
+# limbo. 410 Gone gets it dropped from the index properly.
+RewriteRule ^(my-account|cart|checkout)/?$ - [G]
+RewriteRule ^(comments/)?feed/?$           - [G]
+
+# --- Canonical hostname -----------------------------------------------------
+# The .well-known exception keeps Let's Encrypt renewals working.
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.pavilionmasterbuilders.com/$1 [R=301,L]
+```
+
+Check it from a terminal afterwards. The last line matters most — a bad rewrite rule can
+swallow the whole site, so confirm a normal page still loads before walking away:
+
+```bash
+curl -sI https://pavilionmasterbuilders.com/ | head -3          # 301 → www
+curl -sI https://www.pavilionmasterbuilders.com/shop/ | head -3  # 301 → /products/
+curl -sI https://www.pavilionmasterbuilders.com/cart/ | head -3  # 410
+curl -sI https://www.pavilionmasterbuilders.com/blog/ | head -3  # 200, unchanged
+```
+
 ### Optional: asset caching
 
 Astro fingerprints filenames in `_astro/` (e.g. `index.a1b2c3.css`), so they can be cached
