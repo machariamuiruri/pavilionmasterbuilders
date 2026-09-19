@@ -113,12 +113,26 @@ export async function GET() {
     });
   }
 
+  // '/blog', not '/blog/', was the one URL in here that missed the trailing
+  // slash the rest of the site settled on -- so picking this result cost the
+  // redirect hop #27 removed everywhere else.
   docs.push({
-    u: '/blog',
+    u: '/blog/',
     t: 'Blog',
     k: 'Section',
     d: 'Guides and articles on roofing, construction methods and finishes in Kenya.',
     b: posts.map((post) => `${post.data.title} ${post.data.description}`).join(' '),
+    w: WEIGHT.section,
+  });
+
+  docs.push({
+    u: '/products/',
+    t: 'Our Solutions',
+    k: 'Section',
+    d: 'Every solution we supply and install, in one place.',
+    b: Object.values(productDetails)
+      .map((product) => `${product.title} ${product.tag}`)
+      .join(' '),
     w: WEIGHT.section,
   });
 

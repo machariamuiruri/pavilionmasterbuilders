@@ -743,6 +743,24 @@
             margin: 0 auto;
         }
 
+        .products-all {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .products-all a {
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .products-all a:hover {
+            color: var(--success);
+            border-bottom-color: currentColor;
+        }
+
         .product-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(25px) saturate(200%) brightness(1.1);
@@ -1803,16 +1821,21 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
    Blog — listing, category and post pages
    ========================================================================== */
 
-.blog-hero {
+/* .products-index-hero rides along on every .blog-hero rule: the /products/
+   listing and the /blog/ listing are the site's two directory pages and are
+   meant to look the same. Sharing the rules keeps them that way -- a copy would
+   drift the first time one of them is adjusted. */
+.blog-hero, .products-index-hero {
     padding: 10rem 4rem 3rem;
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: #fff;
 }
 .blog-hero-inner { max-width: 1100px; margin: 0 auto; }
-.blog-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0.6rem 0 1rem; line-height: 1.15; }
-.blog-hero p { color: rgba(255, 255, 255, 0.82); max-width: 62ch; font-size: 1.08rem; }
-.blog-hero .breadcrumb, .blog-hero .breadcrumb a { color: rgba(255, 255, 255, 0.72); }
-.blog-hero .breadcrumb a:hover { color: var(--accent-light); }
+.blog-hero h1, .products-index-hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0.6rem 0 1rem; line-height: 1.15; }
+.blog-hero p, .products-index-hero p { color: rgba(255, 255, 255, 0.82); max-width: 62ch; font-size: 1.08rem; }
+.blog-hero .breadcrumb, .blog-hero .breadcrumb a,
+.products-index-hero .breadcrumb, .products-index-hero .breadcrumb a { color: rgba(255, 255, 255, 0.72); }
+.blog-hero .breadcrumb a:hover, .products-index-hero .breadcrumb a:hover { color: var(--accent-light); }
 
 .blog-listing { padding: 4rem 4rem 7rem; background: var(--background); }
 
@@ -1935,13 +1958,13 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
 .blog-post-cta p { color: var(--text-light); margin-bottom: 1.6rem; }
 
 @media (max-width: 900px) {
-    .blog-hero { padding: 8rem 2rem 2.5rem; }
+    .blog-hero, .products-index-hero { padding: 8rem 2rem 2.5rem; }
     .blog-listing { padding: 3rem 2rem 5rem; }
     .blog-grid { grid-template-columns: 1fr; gap: 2rem; }
     .blog-post-header { padding: 8rem 1.5rem 2rem; }
 }
 @media (max-width: 600px) {
-    .blog-hero { padding: 7rem 1.5rem 2rem; }
+    .blog-hero, .products-index-hero { padding: 7rem 1.5rem 2rem; }
     .blog-listing { padding: 2.5rem 1.5rem 4rem; }
     .blog-post-body, .blog-post-related, .blog-post-cta, .blog-post-tags { padding-left: 1.5rem; padding-right: 1.5rem; }
     .blog-post-hero { padding: 0 1.5rem; }

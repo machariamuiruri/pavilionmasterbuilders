@@ -15,7 +15,7 @@ export default defineConfig({
   trailingSlash: 'always',
 
   integrations: [
-    // lastmod lets Google prioritise recrawls instead of treating all 18 URLs
+    // lastmod lets Google prioritise recrawls instead of treating every URL
     // as equally stale. Dates come from the build, so they move when content is
     // rebuilt and redeployed.
     sitemap({ lastmod: new Date() }),

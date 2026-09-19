@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { productDetails, productOrder } from '../../data/productDetails.js';
+import { products } from '../../data/products.js';
+
+// /products/ had nine pages under it and no page of its own, so the directory
+// itself answered 404 -- for visitors trimming the URL back, and for Google,
+// which was still serving the old WordPress /shop/ and /services/ URLs with
+// nothing current to redirect them to.
+//
+// The homepage grid deliberately leaves A-Frame out (it has its own section, see
+// AFrame.astro), so `products` is eight cards, not nine. A directory page that
+// silently omitted one of its own children would be worse than no page at all,
+// so this walks productOrder -- the list the routes are actually built from --
+// and falls back to productDetails for anything with no homepage card. A product
+// added to productOrder later shows up here whether or not it gets a card.
+const cards = productOrder.map((slug) => {
+  const card = products.find((product) => product.slug === slug);
+  if (card) return card;
+
+  const detail = productDetails[slug];
+  return {
+    tag: detail.tag,
+    img: detail.heroImage,
+    alt: detail.heroAlt ?? detail.title,
+    title: detail.title,
+    link: `/products/${slug}/`,
+    cta: 'View Details',
+    desc: detail.tagline,
+    features: detail.highlights.slice(0, 3).map((highlight) => highlight.title),
+  };
+});
+
+// "Our Solutions" reads fine as a heading but says nothing to someone scanning
+// search results, hence the separate seoTitle. Kept to 32 characters so
+// BaseLayout's 60-character budget still has room to append the company name --
+// adding "in Kenya" would push it over and silently drop the brand instead.
+const seoTitle = 'Construction & Roofing Solutions';
+---
+<BaseLayout
+  title="Our Solutions"
+  seoTitle={seoTitle}
+  description="Every Pavilion Master Builders solution in one place — Decra roofing, light gauge steel, Mixx cement, fibre cement, gutters, rust protection and more, across Kenya."
+>
+  <section class="products-index-hero">
+    <div class="blog-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Solutions</span>
+      </nav>
+      <h1>Our Solutions</h1>
+      <p>Roofing, framing, finishes and protection — the full range we supply and install from our Nairobi office.</p>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="products-grid">
+      {cards.map((card) => <ProductCard {...card} />)}
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>Not sure which solution fits?</h2>
+    <p>Tell us about your project and we will recommend the right materials and give you a free quote.</p>
+    <a class="btn-primary" href="/#contact">Request a Quote</a>
+  </section>
+</BaseLayout>
