@@ -16,6 +16,16 @@ const {
   // it was never handed. `follow` is deliberate: the page should not rank, but
   // the links on it still pass the crawler through to pages that should.
   noindex = false,
+  // Path under public/ for the social-share image (og:image / twitter:image).
+  // Defaults to the site's hero photo so every page shares a sensible preview
+  // even if it never sets one — a product or blog page overrides it with its
+  // own hero so a link to it previews the right subject.
+  image = '/assets/hero/hero.jpg',
+  // Extra nodes to merge into the page's single JSON-LD @graph (e.g. a
+  // product's FAQPage, Product or BreadcrumbList). Kept to one <script> per
+  // page rather than one per schema type, since repeated @context blocks are
+  // what trip up Google's Rich Results linter on multi-schema pages.
+  extraSchema = [],
 } = Astro.props;
 
 // Pages pass the bare page title; the company name is appended here rather than
@@ -38,6 +48,7 @@ const pageTitle = baseTitle.includes(BRAND) || baseTitle.length + SUFFIX.length 
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const origin = Astro.site.origin;
+const imageUrl = new URL(image, Astro.site);
 
 // Built from the same `offices` array the Contact section and Footer use, so an
 // address or phone number is only ever edited in one place (src/data/site.js).
@@ -54,7 +65,11 @@ const schema = {
       areaServed: { '@type': 'Country', name: 'Kenya' },
     },
     ...offices.map((office) => ({
-      '@type': 'LocalBusiness',
+      // Both types are valid together -- GeneralContractor is schema.org's more
+      // specific subtype of LocalBusiness, and search engines accept an array
+      // here. Listed first so a parser that only reads index 0 still gets the
+      // more specific, more useful type.
+      '@type': ['GeneralContractor', 'LocalBusiness'],
       '@id': `${origin}/#${office.short.toLowerCase()}`,
       name: `Pavilion Master Builders — ${office.name}`,
       parentOrganization: { '@id': `${origin}/#organization` },
@@ -68,6 +83,7 @@ const schema = {
         addressCountry: 'KE',
       },
     })),
+    ...extraSchema,
   ],
 };
 ---
@@ -82,6 +98,22 @@ const schema = {
   {/* A noindex page naming itself as the canonical version of something is a
       contradiction, so the tag is emitted only where it means anything. */}
   {!noindex && <link rel="canonical" href={canonical} />}
+
+  <!-- OpenGraph + Twitter Card. Without these, a link dropped into WhatsApp,
+       Slack or X renders with no preview at all rather than a wrong one --
+       every page gets at least the site's hero photo, see the `image` prop. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Pavilion Master Builders" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={imageUrl} />
+  <meta property="og:locale" content="en_KE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={imageUrl} />
+
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.png" />

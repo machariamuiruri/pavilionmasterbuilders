@@ -18,8 +18,32 @@ const { Content } = await post.render();
 const related = relatedProducts
   .map((slug) => products.find((p) => p.slug === slug))
   .filter(Boolean);
+
+const origin = Astro.site.origin;
+const pageUrl = `${origin}/blog/${post.slug}/`;
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${origin}/blog/` },
+      { '@type': 'ListItem', position: 3, name: title, item: pageUrl },
+    ],
+  },
+  {
+    '@type': 'BlogPosting',
+    headline: title,
+    description,
+    url: pageUrl,
+    datePublished: pubDate.toISOString(),
+    dateModified: (updatedDate ?? pubDate).toISOString(),
+    ...(heroImage ? { image: `${origin}${heroImage}` } : {}),
+    author: { '@id': `${origin}/#organization` },
+    publisher: { '@id': `${origin}/#organization` },
+  },
+];
 ---
-<BaseLayout title={title} seoTitle={seoTitle} description={description}>
+<BaseLayout title={title} seoTitle={seoTitle} description={description} image={heroImage} extraSchema={extraSchema}>
   <article class="blog-post">
     <!-- Deliberately a div, not a <header>: global.css styles the bare `header`
          element as the fixed site nav, so a <header> here gets pinned to the top

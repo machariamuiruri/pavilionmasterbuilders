@@ -1798,6 +1798,14 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
 .pgallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
 .pgallery-item:hover img { transform: scale(1.08); }
 
+.pfaq { max-width: 860px; margin: 0 auto; display: grid; gap: 1.4rem; }
+.pfaq-item {
+    background: rgba(255, 255, 255, 0.82); border: 1px solid rgba(212, 165, 116, 0.2);
+    border-radius: 14px; padding: 1.4rem 1.6rem;
+}
+.pfaq-item h3 { font-size: 1.1rem; font-weight: 500; color: var(--primary); margin-bottom: 0.5rem; }
+.pfaq-item p { color: var(--text); font-size: 0.98rem; line-height: 1.7; margin: 0; }
+
 .related { padding: 5.5rem 2rem; background: var(--background); }
 .related .products-grid { max-width: 1300px; margin: 0 auto; }
 .final-cta a.btn-primary { background: #fff; color: var(--success); }

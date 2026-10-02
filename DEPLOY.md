@@ -112,71 +112,140 @@ This is why you should never "delete everything in `public_html` and re-upload."
 are invisible in most FTP clients (they start with a dot) and losing `.well-known/` doesn't
 fail loudly — the certificate just quietly stops renewing and expires ~60 days later.
 
-### Redirects (`.htaccess`)
+### The `.htaccess` file
 
-Because the deploy excludes `.htaccess`, this file exists **only on the server** — it is not
-in git and nothing rebuilds it. If `public_html` is ever wiped, it is gone and has to be
-retyped. That is what this section is for. Edit it at cPanel → **File Manager** → `public_html`
-(turn on "show hidden files" first).
+Because the deploy excludes it, this file exists **only on the server**. It is not in git and
+nothing rebuilds it, so if `public_html` is ever wiped it has to be retyped — which is what
+this section is for. Edit it at cPanel → **File Manager** → `public_html`, after ticking
+**Settings → Show Hidden Files (dotfiles)**.
 
-Two jobs. The first is the old WordPress URLs: Google indexed `/shop/`, `/services/`,
-`/contact/` and `/my-account/` from the site that used to live here, and they 404 today. The
-second is the `www` split — both hostnames serve every page with a 200, so without a redirect
-each page exists at two addresses.
+What was there until now was the WordPress site's `.htaccess`, left behind when the site was
+replaced. WordPress itself is gone from the server, but its rules were not, and one of them
+had a visible effect: `RewriteRule . /index.php [L]` sends every missing URL to `/index.php`,
+which does not exist on a static site, so visitors got the host's grey default error page and
+the custom 404 from `src/pages/404.astro` was never reached. Three other leftover blocks
+(`speedycache`, `WEBPspeedycache`, `SpeedyCacheheaders`) referred to plugins and cache folders
+that no longer exist.
 
-HTTPS is already forced by the host. Do not add rules for it.
+The compression and expiry blocks below are the parts of that file worth keeping.
+
+**Do not add rules forcing HTTPS.** The host already does it, at both hostnames.
 
 ```apache
+# ============================================================================
+# Pavilion Master Builders
+# Documented in DEPLOY.md. Keep the two in sync -- this file is not in git and
+# is not recreated by a deploy.
+# ============================================================================
+
+# --- Error pages ------------------------------------------------------------
+# The site builds a styled 404 to /404.html. Without these lines Apache serves
+# its own generic one instead. 410 gets the same page; the wording fits both.
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
 RewriteEngine On
 
 # --- Old WordPress URLs -----------------------------------------------------
-# These run BEFORE the www rule so legacy traffic takes one hop, not two.
-# NE is required: without it the # is escaped to %23 and the anchor breaks.
+# Google indexed these from the WooCommerce site that used to live here.
+# They run BEFORE the www rule so legacy traffic takes one hop, not two.
+# NE is required on the last one: without it the # is escaped to %23.
 RewriteRule ^shop/?$     https://www.pavilionmasterbuilders.com/products/ [R=301,L]
 RewriteRule ^services/?$ https://www.pavilionmasterbuilders.com/products/ [R=301,L]
 RewriteRule ^contact/?$  https://www.pavilionmasterbuilders.com/#contact  [R=301,L,NE]
 
 # Nothing on the current site corresponds to these. Redirecting a checkout page
-# to the homepage is a soft 404 — Google ignores it and leaves the old URL in
+# to the homepage is a soft 404 -- Google ignores it and leaves the old URL in
 # limbo. 410 Gone gets it dropped from the index properly.
 RewriteRule ^(my-account|cart|checkout)/?$ - [G]
 RewriteRule ^(comments/)?feed/?$           - [G]
 
 # --- Canonical hostname -----------------------------------------------------
-# The .well-known exception keeps Let's Encrypt renewals working.
+# Both hostnames serve every page with a 200, so without this each page exists
+# at two addresses. The .well-known exception keeps Let's Encrypt renewals
+# working -- an ACME challenge that gets redirected fails.
 RewriteCond %{REQUEST_URI} !^/\.well-known/
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.pavilionmasterbuilders.com/$1 [R=301,L]
+
+# --- Compression ------------------------------------------------------------
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html
+	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE text/plain
+	AddOutputFilterByType DEFLATE text/xml
+	AddOutputFilterByType DEFLATE text/javascript
+	AddOutputFilterByType DEFLATE application/javascript
+	AddOutputFilterByType DEFLATE application/x-javascript
+	AddOutputFilterByType DEFLATE application/json
+	AddOutputFilterByType DEFLATE application/xml
+	AddOutputFilterByType DEFLATE application/rss+xml
+	AddOutputFilterByType DEFLATE application/xhtml+xml
+	AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+	AddOutputFilterByType DEFLATE font/ttf
+	AddOutputFilterByType DEFLATE font/otf
+	AddOutputFilterByType DEFLATE font/woff
+	AddOutputFilterByType DEFLATE font/woff2
+	AddOutputFilterByType DEFLATE image/svg+xml
+	AddOutputFilterByType DEFLATE image/x-icon
+</IfModule>
+
+# --- Caching ----------------------------------------------------------------
+# A0 on the default is what keeps HTML fresh: a redeploy is visible immediately
+# rather than after a cache expires. Astro fingerprints everything in _astro/,
+# so those files are safe to keep for a year.
+#
+# Note the trap: photos under /assets/ are NOT fingerprinted -- their filenames
+# are written by hand. Replacing one in place leaves anybody who already has it
+# on the old image for a year. Give a replaced photo a new filename.
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresDefault A0
+	ExpiresByType text/css A31536000
+	ExpiresByType text/javascript A31536000
+	ExpiresByType application/javascript A31536000
+	ExpiresByType font/ttf A31536000
+	ExpiresByType font/otf A31536000
+	ExpiresByType font/woff A31536000
+	ExpiresByType font/woff2 A31536000
+	ExpiresByType application/vnd.ms-fontobject A31536000
+	ExpiresByType image/jpeg A31536000
+	ExpiresByType image/png A31536000
+	ExpiresByType image/gif A31536000
+	ExpiresByType image/webp A31536000
+	ExpiresByType image/svg+xml A31536000
+	ExpiresByType image/x-icon A31536000
+	ExpiresByType application/pdf A31536000
+</IfModule>
+
+<IfModule mod_headers.c>
+	<FilesMatch "\.html$">
+		Header set Cache-Control "public, max-age=0, must-revalidate"
+	</FilesMatch>
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the "ea-php82" package as the default "PHP" programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php82 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
 ```
+
+Leave the cPanel handler block at the bottom exactly as cPanel wrote it — it is regenerated
+when the PHP version changes, and the markers are how cPanel finds it. Nothing on the site is
+PHP, but removing it is not worth the risk of cPanel rewriting the file.
 
 Check it from a terminal afterwards. The last line matters most — a bad rewrite rule can
-swallow the whole site, so confirm a normal page still loads before walking away:
+swallow every URL on the site, so confirm a normal page still loads before walking away:
 
 ```bash
-curl -sI https://pavilionmasterbuilders.com/ | head -3          # 301 → www
-curl -sI https://www.pavilionmasterbuilders.com/shop/ | head -3  # 301 → /products/
-curl -sI https://www.pavilionmasterbuilders.com/cart/ | head -3  # 410
-curl -sI https://www.pavilionmasterbuilders.com/blog/ | head -3  # 200, unchanged
+curl -sI https://pavilionmasterbuilders.com/ | head -3            # 301 → www
+curl -sI https://www.pavilionmasterbuilders.com/shop/ | head -3    # 301 → /products/
+curl -sI https://www.pavilionmasterbuilders.com/cart/ | head -3    # 410
+curl -s  https://www.pavilionmasterbuilders.com/nope/ | grep title # the styled 404
+curl -sI https://www.pavilionmasterbuilders.com/blog/ | head -3     # 200, unchanged
 ```
-
-### Optional: asset caching
-
-Astro fingerprints filenames in `_astro/` (e.g. `index.a1b2c3.css`), so they can be cached
-forever safely. To enable, edit `public_html/.htaccess` in File Manager and add:
-
-```apache
-<IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|jpg|jpeg|png|webp|avif|svg|woff2)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
-  <FilesMatch "\.html$">
-    Header set Cache-Control "public, max-age=0, must-revalidate"
-  </FilesMatch>
-</IfModule>
-```
-
-The `must-revalidate` on HTML matters: it's what lets a content change appear immediately
-instead of being cached by browsers.
 
 ---
 

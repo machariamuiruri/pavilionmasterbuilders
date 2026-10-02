@@ -83,6 +83,25 @@ const { block, alt = false } = Astro.props;
   </section>
 )}
 
+{block.type === 'faq' && (
+  <section class={`pblock${alt ? ' alt' : ''}`}>
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>{block.heading}</h2>
+        {block.intro && <p>{block.intro}</p>}
+      </div>
+      <div class="pfaq">
+        {block.items.map((qa) => (
+          <div class="pfaq-item">
+            <h3>{qa.q}</h3>
+            <p>{qa.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
 {block.type === 'gallery' && (
   <section class={`pblock${alt ? ' alt' : ''}`}>
     <div class="pblock-inner">
