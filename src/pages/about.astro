@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Stats from '../components/Stats.astro';
+
+const origin = Astro.site.origin;
+const pageUrl = `${origin}/about/`;
+
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'About Us', item: pageUrl },
+    ],
+  },
+  {
+    '@type': 'AboutPage',
+    name: 'About Pavilion Master Builders',
+    url: pageUrl,
+    mainEntity: { '@id': `${origin}/#organization` },
+  },
+];
+---
+<BaseLayout
+  title="About Pavilion Master Builders"
+  description="Pavilion Master Builders is an East African construction company specialising in DECRA roofing, light gauge steel, fibre cement and sustainable building solutions. Learn our story."
+  image="/assets/project-showcase/showcase-01.jpeg"
+  extraSchema={extraSchema}
+>
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>About Us</span>
+      </nav>
+      <h1>Building Tomorrow's East Africa, Today</h1>
+      <p>Sustainable construction solutions that blend timeless design with modern functionality and unparalleled craftsmanship.</p>
+    </div>
+  </section>
+
+  <section class="product-intro">
+    <div class="product-intro-inner">
+      <p class="product-intro-text">
+        At Pavilion Master Builders Limited, we believe that exceptional construction goes beyond
+        mere functionality. Since our founding, we have been driven by a singular vision: creating
+        extraordinary structures that seamlessly blend timeless architectural design with
+        cutting-edge modern functionality and unparalleled craftsmanship.
+      </p>
+    </div>
+  </section>
+
+  <section class="pblock alt">
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>Our Philosophy</h2>
+        <p>
+          Our company was established on the fundamental principle that sustainable building
+          solutions can transform communities across East Africa. We don't just construct
+          buildings; we craft legacies that stand the test of time while meeting the evolving
+          needs of modern living and working environments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Stats />
+
+  <section class="pblock">
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>What Sets Us Apart</h2>
+        <p set:html={`Our multidisciplinary approach ensures that every project benefits from our extensive knowledge across construction specialties &mdash; from <a href="/products/decra-roofing/">DECRA roofing systems</a> and <a href="/products/light-gauge-steel/">light gauge steel framing</a> to <a href="/products/fiber-cement/">fiber cement boards</a>.`} />
+      </div>
+      <div class="pfeature-grid">
+        <div class="pfeature-card">
+          <div class="pfeature-icon"><i class="fas fa-leaf" aria-hidden="true"></i></div>
+          <div class="pfeature-body">
+            <h3>Sustainable Innovation</h3>
+            <p>Environmentally responsible construction practices that reduce environmental impact and provide long-term value — covering material selection, energy efficiency and water conservation.</p>
+          </div>
+        </div>
+        <div class="pfeature-card">
+          <div class="pfeature-icon"><i class="fas fa-house" aria-hidden="true"></i></div>
+          <div class="pfeature-body">
+            <h3>Advanced Roofing Solutions</h3>
+            <p>We specialise in DECRA roofing systems, providing durable, weather-resistant and aesthetically pleasing roofing that protects and enhances your investment.</p>
+          </div>
+        </div>
+        <div class="pfeature-card">
+          <div class="pfeature-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+          <div class="pfeature-body">
+            <h3>Structural Excellence</h3>
+            <p>Our expertise in light gauge steel construction delivers strength, flexibility and cost-effectiveness for projects of all scales.</p>
+          </div>
+        </div>
+        <div class="pfeature-card">
+          <div class="pfeature-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+          <div class="pfeature-body">
+            <h3>Modern Materials</h3>
+            <p>High-quality fiber cement boards offering superior durability, fire resistance and design versatility.</p>
+          </div>
+        </div>
+        <div class="pfeature-card">
+          <div class="pfeature-icon"><i class="fas fa-droplet" aria-hidden="true"></i></div>
+          <div class="pfeature-body">
+            <h3>Water Management</h3>
+            <p>Innovative water harvesting systems that help clients achieve sustainability goals while reducing operational costs.</p>
+          </div>
+        </div>
+        <div class="pfeature-card">
+          <div class="pfeature-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div>
+          <div class="pfeature-body">
+            <h3>End-to-End Service</h3>
+            <p>From initial concept to final completion, comprehensive project management ensures seamless delivery on time and within budget.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pblock alt">
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>Our Commitment to East Africa</h2>
+        <p>
+          As a proudly East African company, we understand the unique challenges and opportunities
+          in our region. Our solutions are specifically designed to thrive in local climates while
+          meeting international standards of quality and sustainability. We take pride in our role
+          as partners in East Africa's development, contributing to the creation of resilient,
+          beautiful and functional spaces that serve communities for generations to come.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pblock">
+    <div class="pblock-inner">
+      <div class="pblock-head">
+        <h2>Craftsmanship That Speaks</h2>
+        <p>
+          Every project we undertake reflects our unwavering commitment to excellence. Our skilled
+          craftsmen and modern construction techniques ensure that each structure we create is not
+          just built to last, but built to inspire. Whether you're planning a residential
+          development, commercial complex or industrial facility, Pavilion Master Builders brings
+          the expertise, innovation and dedication needed to transform your vision into reality.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>Ready to Build Something Extraordinary?</h2>
+    <p>Contact us today to discuss how we can bring sustainable building excellence to your next project.</p>
+    <a class="btn-primary" href="/#contact">Request a Quote</a>
+  </section>
+</BaseLayout>
