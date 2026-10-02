@@ -126,6 +126,15 @@ export async function GET() {
   });
 
   docs.push({
+    u: '/about/',
+    t: 'About Us',
+    k: 'Section',
+    d: 'Our story, philosophy and what sets Pavilion Master Builders apart.',
+    b: 'sustainable innovation advanced roofing solutions structural excellence modern materials water management end-to-end service East Africa craftsmanship',
+    w: WEIGHT.section,
+  });
+
+  docs.push({
     u: '/products/',
     t: 'Our Solutions',
     k: 'Section',

@@ -44,6 +44,7 @@ export const whatsapp = "https://wa.me/254705697163?text=Hello%20Pavilion%20Mast
 
 export const navLinks = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about/" },
   {
     label: "Solutions", href: "/#products", dropdown: [
       { label: "Decra Roofing", href: "/products/decra-roofing/" },
