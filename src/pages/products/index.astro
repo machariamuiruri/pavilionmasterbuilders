@@ -37,11 +37,23 @@ const cards = productOrder.map((slug) => {
 // BaseLayout's 60-character budget still has room to append the company name --
 // adding "in Kenya" would push it over and silently drop the brand instead.
 const seoTitle = 'Construction & Roofing Solutions';
+
+const origin = Astro.site.origin;
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${origin}/products/` },
+    ],
+  },
+];
 ---
 <BaseLayout
   title="Our Solutions"
   seoTitle={seoTitle}
   description="Every Pavilion Master Builders solution in one place — Decra roofing, light gauge steel, Mixx cement, fibre cement, gutters, rust protection and more, across Kenya."
+  extraSchema={extraSchema}
 >
   <section class="products-index-hero">
     <div class="blog-hero-inner">

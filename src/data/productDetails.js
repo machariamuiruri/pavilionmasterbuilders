@@ -30,6 +30,13 @@ export const productDetails = {
       { icon: 'fa-cloud-sun-rain', title: 'Weatherproof', desc: 'Resists rust, corrosion and UV rays.' },
       { icon: 'fa-palette', title: 'Style Options', desc: 'Six profiles and a wide range of colours.' },
     ],
+    faqs: [
+      { q: 'What is DECRA roofing made of?', a: 'DECRA roofing is lightweight steel roofing coated in natural stone chips, combining the look of traditional tiles with the strength and weight of a steel roof.' },
+      { q: 'How long does DECRA roofing last?', a: 'Genuine DECRA tiles are built for a 50+ year lifespan with very low maintenance, backed by the manufacturer’s guarantee.' },
+      { q: 'What is the cost of DECRA roofing in Kenya?', a: 'Cost depends on the profile you choose, your roof’s size and pitch, and the trim and accessories needed to complete the system — request a free quote from Pavilion Master Builders for an accurate price.' },
+      { q: 'Is DECRA roofing suitable for Kenya’s climate?', a: 'Yes — DECRA resists rust, corrosion and UV rays, making it well suited to Kenya’s intense sun and heavy rains.' },
+      { q: 'What DECRA profiles are available?', a: 'Six genuine profiles — Heritage, Shingle, Milano, Shake, Fortiza Tile and Fortiza Shingle — each available in a range of colours.' },
+    ],
     sections: [
       {
         type: 'spec-table',
@@ -105,6 +112,13 @@ export const productDetails = {
       { icon: 'fa-recycle', title: 'Sustainable', desc: 'Energy-efficient, low-waste production.' },
       { icon: 'fa-shapes', title: 'Versatile', desc: 'Commercial, residential, modular & industrial.' },
     ],
+    faqs: [
+      { q: 'What is light gauge steel (LGS) construction?', a: 'Light gauge steel construction uses FRAMECAD®-engineered steel trusses, wall panels and floor joists, designed by software and pre-assembled for fast, precise builds.' },
+      { q: 'How durable is light gauge steel?', a: 'Galvanized light gauge steel resists rust, warping, termites and rot, giving frames superior strength and a longer structural life than timber framing.' },
+      { q: 'Is light gauge steel faster to build with than traditional construction?', a: 'Yes — pre-assembled LGS panels and trusses cut on-site construction time by up to 40% compared with conventional masonry or timber building.' },
+      { q: 'Does light gauge steel rust or attract termites?', a: 'No — galvanized steel is immune to termite damage and, properly coated, resists rust and corrosion far better than untreated timber.' },
+      { q: 'What can light gauge steel be used for?', a: 'LGS suits commercial buildings, residential homes, modular construction and industrial structures, from trusses and wall panels to full floor systems.' },
+    ],
     sections: [
       {
         type: 'feature-grid',
@@ -165,6 +179,13 @@ export const productDetails = {
       { icon: 'fa-droplet', title: 'Wet & Dry', desc: 'Indoor, outdoor, showers, worktops.' },
       { icon: 'fa-layer-group', title: 'Over Existing Tiles', desc: 'Applies over most surfaces.' },
       { icon: 'fa-circle-check', title: 'Non-Hazardous', desc: 'Water-based and easy to apply.' },
+    ],
+    faqs: [
+      { q: 'What is Mixx Cement?', a: 'Mixx Cement is a decorative micro-cement finish — one bag of cement powder and one bottle of binder, mixed 1:1 — that creates a Venetian-plaster look on walls, floors and worktops.' },
+      { q: 'Can Mixx Cement be applied over existing tiles?', a: 'Yes — Mixx can be applied directly over most existing surfaces, including tiles, without the cost and mess of demolition.' },
+      { q: 'Is Mixx Cement suitable for wet areas like bathrooms and showers?', a: 'Yes — Mixx is water-based and non-hazardous, and is designed for wet and dry areas alike, including showers, when finished with the correct sealer.' },
+      { q: 'How many colours does Mixx Cement come in?', a: 'Mixx is available in 24 designer colours across its three finishes — Designer Wall, Easy Floor and Outdoor Plaster.' },
+      { q: 'Is Mixx Cement suitable for outdoor use?', a: 'Yes — the Outdoor Plaster finish is formulated specifically for exterior surfaces, with a durable, mottled, weatherproof appearance.' },
     ],
     sections: [
       {
@@ -235,6 +256,12 @@ export const productDetails = {
       { icon: 'fa-umbrella', title: 'Water Resistant', desc: 'For wet and exterior areas.' },
       { icon: 'fa-leaf', title: 'Asbestos-Free', desc: 'Safe and eco-friendly.' },
     ],
+    faqs: [
+      { q: 'What is fiber cement board used for?', a: 'Fiber cement board is used for ceilings, wall cladding and flooring, both indoors and outdoors, wherever a fire- and weather-resistant alternative to timber or gypsum is needed.' },
+      { q: 'Is fiber cement fireproof?', a: 'Fiber cement is non-combustible and fire resistant, making it a safer choice than timber for ceilings and cladding.' },
+      { q: 'Does fiber cement contain asbestos?', a: 'No — our fiber cement boards are entirely asbestos-free.' },
+      { q: 'Is fiber cement resistant to termites and water?', a: 'Yes — fiber cement is impervious to termites and resists water, making it suitable for humid climates and exterior applications.' },
+    ],
     sections: [
       {
         type: 'feature-grid',
@@ -290,6 +317,11 @@ export const productDetails = {
       { icon: 'fa-wrench', title: 'Low Maintenance', desc: 'Fit and forget for years.' },
       { icon: 'fa-leaf', title: 'Eco-Friendly', desc: 'Sustainable materials.' },
     ],
+    faqs: [
+      { q: 'Why choose UPVC gutters over metal gutters?', a: 'UPVC gutters never rust or corrode, unlike metal systems, and need far less maintenance over their lifetime.' },
+      { q: 'Are UPVC gutters durable in Kenya’s climate?', a: 'Yes — UPVC resists UV degradation, rust and corrosion, so it holds up well through Kenya’s sun and rainy seasons.' },
+      { q: 'What does a complete UPVC gutter system include?', a: 'A complete system includes the gutter run and joint brackets, running outlets, downpipes and clips, branches and connectors, and a downpipe shoe — all supplied in matching UPVC.' },
+    ],
     sections: [
       {
         type: 'feature-grid',
@@ -342,6 +374,11 @@ export const productDetails = {
       { icon: 'fa-paint-roller', title: 'Easy to Apply', desc: 'Straightforward on most metals.' },
       { icon: 'fa-water', title: 'Marine-Grade', desc: 'Suited to harsh, wet environments.' },
       { icon: 'fa-industry', title: 'Industrial & Residential', desc: 'One solution, many uses.' },
+    ],
+    faqs: [
+      { q: 'What does Neutrarust 661 do?', a: 'Neutrarust 661 converts existing rust into a stable, paintable surface and forms a barrier that prevents new corrosion from forming.' },
+      { q: 'Where can Neutrarust rust converter be used?', a: 'It suits roofs, railings, vehicles, bridges, marine equipment and industrial installations — anywhere metal is exposed to moisture and the elements.' },
+      { q: 'Is Neutrarust safe for residential use?', a: 'Yes — Neutrarust 661 is easy to apply and suitable for both industrial and residential applications.' },
     ],
     sections: [
       {
@@ -396,6 +433,11 @@ export const productDetails = {
       { icon: 'fa-recycle', title: 'Eco-Friendly', desc: 'Sustainable materials throughout.' },
       { icon: 'fa-lightbulb', title: 'Energy Efficient', desc: 'Lower utility costs by design.' },
       { icon: 'fa-landmark', title: 'Built to Last', desc: 'Durable in adverse weather.' },
+    ],
+    faqs: [
+      { q: 'What is alternative building technology?', a: 'Alternative building technology uses modern materials and methods — such as light gauge steel framing — in place of conventional masonry, to deliver durable structures faster and more sustainably.' },
+      { q: 'What types of buildings can be delivered with alternative building methods?', a: 'Homes, schools, churches, cabins, hotels and hospitals can all be delivered using Pavilion Master Builders’ alternative building approach.' },
+      { q: 'Is alternative building more affordable than traditional construction?', a: 'Alternative building reduces on-site labour and construction time, which lowers overall project costs compared with conventional masonry construction — request a free quote for figures specific to your project.' },
     ],
     sections: [
       {
@@ -459,6 +501,12 @@ export const productDetails = {
       { icon: 'fa-bug-slash', title: 'Termite & Rot Proof', desc: 'Galvanized steel shrugs off pests and damp.' },
       { icon: 'fa-expand', title: 'Soaring Interiors', desc: 'Open plans, lofts and glazed gable ends.' },
       { icon: 'fa-wrench', title: 'Low Maintenance', desc: 'No repainting, no seasonal pest treatment.' },
+    ],
+    faqs: [
+      { q: 'What is an A-Frame structure built from?', a: 'Pavilion’s A-Frame structures are built on light-gauge steel framing rather than timber, giving the classic A-Frame shape a termite-proof, low-maintenance structure.' },
+      { q: 'Are steel A-Frame homes more durable than timber A-Frames?', a: 'Yes — galvanized steel resists termites, rot and warping even in humid or high-rainfall conditions, which timber-framed A-Frames are prone to.' },
+      { q: 'What are A-Frame structures typically used for?', a: 'A-Frames suit weekend and holiday homes, glamping cabins, guest cottages, garden studios and farm retreats.' },
+      { q: 'How long does it take to build a steel A-Frame?', a: 'Prefabricated steel components are fabricated off-site and assembled on-site, so steel A-Frames go up faster than conventional timber or masonry construction.' },
     ],
     sections: [
       {
@@ -524,6 +572,11 @@ export const productDetails = {
       { icon: 'fa-spray-can-sparkles', title: 'Roof Cleaning', desc: 'Eco-friendly deep cleaning.' },
       { icon: 'fa-leaf', title: 'Eco-Friendly', desc: 'Safe, non-toxic solutions.' },
       { icon: 'fa-droplet-slash', title: 'Leak Repair', desc: 'Fix wear before it spreads.' },
+    ],
+    faqs: [
+      { q: 'When should a roof be re-roofed instead of repaired?', a: 'Re-roofing is the better option when wear, leaks or damage are widespread rather than isolated — our team can assess your roof and recommend repair or full replacement.' },
+      { q: 'How often should a roof be professionally cleaned?', a: 'Roofs benefit from periodic cleaning to remove moss, algae and debris before they cause deterioration; the right interval depends on your roof type and local conditions, which we can advise on during a site visit.' },
+      { q: 'Is roof cleaning safe for Decra and other metal roofs?', a: 'Yes — our roof cleaning uses eco-friendly, non-toxic solutions suited to stone-coated and metal roofing systems.' },
     ],
     sections: [
       {

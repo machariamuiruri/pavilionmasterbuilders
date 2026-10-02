@@ -15,8 +15,42 @@ export function getStaticPaths() {
 const { product } = Astro.props;
 // "Explore other solutions" — the other product cards
 const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
+
+const origin = Astro.site.origin;
+const pageUrl = `${origin}/products/${product.slug}/`;
+
+// FAQPage and Product are additive, so a product missing `faqs` still gets a
+// valid graph — just without that node. No AggregateRating here: we have no
+// real review data, and fabricating one would violate Google's structured
+// data guidelines as well as mislead buyers.
+const extraSchema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Solutions', item: `${origin}/products/` },
+      { '@type': 'ListItem', position: 3, name: product.title, item: pageUrl },
+    ],
+  },
+  {
+    '@type': 'Product',
+    name: product.title,
+    description: product.metaDescription ?? product.tagline,
+    image: `${origin}${product.heroImage}`,
+    url: pageUrl,
+    brand: { '@type': 'Organization', name: 'Pavilion Master Builders' },
+  },
+  ...(product.faqs ? [{
+    '@type': 'FAQPage',
+    mainEntity: product.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  }] : []),
+];
 ---
-<BaseLayout title={product.title} description={product.metaDescription ?? product.tagline}>
+<BaseLayout title={product.title} description={product.metaDescription ?? product.tagline} image={product.heroImage} extraSchema={extraSchema}>
   <!-- Product hero -->
   <section class="product-hero" style={`background-image: linear-gradient(135deg, rgba(26,38,52,0.86), rgba(45,90,61,0.78)), url('${product.heroImage}');`}>
     <div class="product-hero-inner">
@@ -53,6 +87,14 @@ const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
   <!-- Content sections -->
   {product.sections.map((block, i) => <ProductSection block={block} alt={i % 2 === 1} />)}
+
+  <!-- FAQ — the visible HTML backing the FAQPage schema above -->
+  {product.faqs && (
+    <ProductSection
+      block={{ type: 'faq', heading: 'Frequently Asked Questions', items: product.faqs }}
+      alt={product.sections.length % 2 === 1}
+    />
+  )}
 
   <!-- CTA -->
   <section class="final-cta">
