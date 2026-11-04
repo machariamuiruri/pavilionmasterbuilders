@@ -1844,6 +1844,17 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
 .blog-hero .breadcrumb, .blog-hero .breadcrumb a,
 .products-index-hero .breadcrumb, .products-index-hero .breadcrumb a { color: rgba(255, 255, 255, 0.72); }
 .blog-hero .breadcrumb a:hover, .products-index-hero .breadcrumb a:hover { color: var(--accent-light); }
+.blog-rss-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.2rem;
+    color: var(--accent-light);
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+.blog-rss-link:hover { color: #fff; }
 
 .blog-listing { padding: 4rem 4rem 7rem; background: var(--background); }
 
