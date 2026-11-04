@@ -24,6 +24,12 @@ export async function GET(context) {
       link: `/blog/${post.slug}/`,
       categories: [post.data.category, ...post.data.tags],
     })),
-    customData: '<language>en-ke</language>',
+    // atom:link rel="self" tells feed readers the feed's own canonical address;
+    // the W3C Feed Validator recommends it for RSS 2.0.
+    xmlns: { atom: 'http://www.w3.org/2005/Atom' },
+    customData: [
+      '<language>en-ke</language>',
+      `<atom:link href="${new URL('rss.xml', context.site)}" rel="self" type="application/rss+xml" />`,
+    ].join(''),
   });
 }
