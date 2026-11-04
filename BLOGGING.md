@@ -88,6 +88,28 @@ To put an image inside the body of a post:
 ![Description of the image](/assets/blog/another-photo.jpg)
 ```
 
+## Adding FAQs
+
+Give the post a section headed exactly `## Frequently asked questions` (or `## FAQs`),
+with each question as a `###` subheading and its answer underneath:
+
+```markdown
+## Frequently asked questions
+
+### Can you paint over a rust converter?
+
+Yes. Once it has dried hard (24–48 hours), it makes a good base for primer and paint.
+
+### How long does it take to work?
+
+Each coat is touch dry in about 20–45 minutes.
+```
+
+That's all. The site reads the questions from that section and adds FAQ structured data
+to the page for search engines and AI assistants, so there's nothing to fill in twice.
+The section ends at the next `##` heading. Keep each answer to plain paragraphs; a
+question with no answer under it is left out.
+
 ## Drafts and works in progress
 
 Set `draft: true` and the post won't appear on the live site. It stays visible when

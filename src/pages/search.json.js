@@ -10,7 +10,7 @@
 import { getCollection } from 'astro:content';
 import { productDetails } from '../data/productDetails.js';
 import { stats, services, whyChoose, testimonials, projects } from '../data/site.js';
-import { publishedPosts, slugify } from '../utils/blog.js';
+import { publishedPosts, slugify, squash, stripMarkdown } from '../utils/blog.js';
 
 // Keys holding paths, ids or emoji rather than prose. Indexing them would put
 // things like "assets" or a slug fragment into the searchable text.
@@ -38,22 +38,7 @@ function collectText(value, out) {
   return out;
 }
 
-const squash = (text) => text.replace(/\s+/g, ' ').trim();
-
 const textOf = (value) => squash(collectText(value, []).join(' '));
-
-// Markdown to plain prose. Only the words matter here, so this is deliberately
-// crude rather than a real parser.
-const stripMarkdown = (md) =>
-  squash(
-    md
-      .replace(/<!--[\s\S]*?-->/g, ' ')
-      .replace(/```[\s\S]*?```/g, ' ')
-      .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-      .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
-      .replace(/^[>\s]*[-*+]\s+/gm, ' ')
-      .replace(/[#*_`~|]+/g, ' ')
-  );
 
 // Relative importance by page type, applied to the final score. Without this a
 // thin listing page outranks real content whenever its title happens to start

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { products } from '../../data/products.js';
-import { formatDate, publishedPosts, slugify } from '../../utils/blog.js';
+import { faqsOf, formatDate, publishedPosts, slugify } from '../../utils/blog.js';
 
 export async function getStaticPaths() {
   const posts = publishedPosts(await getCollection('blog'));
@@ -21,6 +21,9 @@ const related = relatedProducts
 
 const origin = Astro.site.origin;
 const pageUrl = `${origin}/blog/${post.slug}/`;
+
+// Read from the post's own "Frequently asked questions" section -- see faqsOf().
+const faqs = faqsOf(post.body);
 const extraSchema = [
   {
     '@type': 'BreadcrumbList',
@@ -41,6 +44,14 @@ const extraSchema = [
     author: { '@id': `${origin}/#organization` },
     publisher: { '@id': `${origin}/#organization` },
   },
+  ...(faqs.length > 0 ? [{
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  }] : []),
 ];
 ---
 <BaseLayout title={title} seoTitle={seoTitle} description={description} image={heroImage} extraSchema={extraSchema}>
