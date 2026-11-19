@@ -267,10 +267,10 @@ export const productDetails = {
         type: 'feature-grid',
         heading: 'Board Types',
         items: [
-          { img: '/assets/fiber-cement/fiber-cement-01.jpeg', title: 'Vented Ceiling Board', desc: 'Perforated fiber cement ceiling board for ventilation and clean lines.' },
-          { img: '/assets/fiber-cement/fiber-cement-02.jpeg', title: 'Painted V-Groove Board', desc: 'Decorative V-groove board for elegant soffits and ceilings.' },
-          { img: '/assets/fiber-cement/fiber-cement-08.jpeg', title: 'Walling Board', desc: 'Durable walling board for interior and exterior partitions.' },
-          { img: '/assets/fiber-cement/fiber-cement-09.jpeg', title: 'Cladding Plank', desc: 'Wood-look cladding plank that transforms any facade.' },
+          { img: '/assets/fiber-cement/board-vented-ceiling.jpg', title: 'Vented Ceiling Board', desc: 'Perforated fiber cement ceiling board for ventilation and clean lines.' },
+          { img: '/assets/fiber-cement/board-vgroove-textured.jpg', title: 'V-Groove Textured Board', desc: 'Decorative V-groove board for elegant soffits and ceilings.' },
+          { img: '/assets/fiber-cement/board-walling.jpg', title: 'Walling Board', desc: 'Durable walling board for interior and exterior partitions.' },
+          { img: '/assets/fiber-cement/board-cladding-plank.jpg', title: 'Cladding Plank', desc: 'Wood-look cladding plank that transforms any facade.' },
         ],
       },
       {
