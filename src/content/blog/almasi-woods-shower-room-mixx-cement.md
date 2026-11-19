@@ -19,6 +19,14 @@ and a built-in vanity, all in one continuous surface with no tiles or grout line
 This is the story of how that room came together, and of the installer whose hands did
 most of the work.
 
+<div class="blog-inline-cta">
+  <p>Want a bathroom like this? Send us a photo and rough measurements.</p>
+  <div class="blog-inline-cta__buttons">
+    <a class="btn-primary" href="/#contact">Get a Mixx quote</a>
+    <a class="btn-secondary btn-whatsapp" href="https://wa.me/254705697163?text=Hello%20Pavilion%20Master%20Builders%2C%20I%27d%20like%20a%20quote%20for%20a%20Mixx%20Cement%20bathroom." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp us</a>
+  </div>
+</div>
+
 ## The Brief: One Surface, No Grout
 
 The homeowner wanted a bathroom that felt calm and solid, and that would stay that way.
@@ -86,6 +94,14 @@ The work followed the normal Mixx sequence:
 
 Four working days, Wednesday to Saturday, took the room from undercoat to finished.
 
+<div class="blog-inline-cta">
+  <p>Planning a bathroom, shower or floor? We'll tell you what it would take.</p>
+  <div class="blog-inline-cta__buttons">
+    <a class="btn-primary" href="/#contact">Request a quote</a>
+    <a class="btn-secondary btn-whatsapp" href="https://wa.me/254705697163?text=Hello%20Pavilion%20Master%20Builders%2C%20I%27d%20like%20a%20quote%20for%20a%20Mixx%20Cement%20bathroom." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp</a>
+  </div>
+</div>
+
 ## The Finished Room
 
 ### A shower without a single joint
@@ -146,8 +162,39 @@ tiles, so many bathrooms can be refinished without removing the old tiles first.
 
 ### What colour is this bathroom?
 
-This project used White Linen, a warm off-white from the Mixx colour range. Other colours
-are available, and finished samples can be seen at our showroom.
+This project used White Linen, a warm off-white from the
+[Mixx colour range](/products/mixx-cement/). Other colours are available, and finished
+samples can be seen at our showroom.
+
+### How much does a Mixx Cement bathroom cost per m²?
+
+It depends on the size of the room, the condition of the surfaces, the colour and finish,
+and how much of it is wet area needing the extra Supreme Seal coat. As a guide to material
+use, one 12.5kg bag of Mixx plaster with 5 litres of Neutral Binder covers about 17.5 m²
+at the standard two coats. Because Mixx can go straight over existing tiles, there is
+usually no demolition to pay for. Send us photos and rough measurements for an accurate
+quote.
+
+### Will Mixx Cement crack in a bathroom?
+
+Mixx is mixed with Neutral Binder, which improves its flexural strength and limits
+shrinkage as it dries, and it goes on in thin coats. Like any cement-based finish, though,
+it follows what is underneath it, so cracked or loose plaster or tiles are repaired before
+application. On this project the bare plaster was checked and prepared before the first
+coat went on.
+
+### How durable is a Mixx Cement shower?
+
+With the right sealer, very durable. Walls get Silly Seal, floors get the tougher Serious
+Seal, and the shower and other wet zones get an extra coat of Supreme Seal. The sealer
+takes the daily wear and water, and with no grout lines there are no joints to stain,
+grow mould or come loose.
+
+### How do you clean a Mixx Cement bathroom?
+
+Wipe it down with warm water and a mild, pH-neutral cleaner using a soft cloth or mop.
+Avoid scouring pads, abrasive powders and strong acidic or bleach-based cleaners, because
+they wear down the sealer over time.
 
 ## See It for Yourself
 
@@ -155,6 +202,18 @@ Photographs flatten micro-cement. The depth of a hand-trowelled surface and the 
 catches the light are much easier to judge in person. Finished Mixx samples are on display
 at our **showroom at Vision Plaza, Mombasa Road, Nairobi**.
 
-[Explore the Mixx Cement range](/products/mixx-cement/), or
-[get in touch for a quote](/#contact) and we'll talk through what Mixx could do for your
-bathroom.
+[Explore the Mixx Cement range](/products/mixx-cement/), or get in touch and we'll talk
+through what Mixx could do for your bathroom.
+
+<div class="blog-inline-cta">
+  <p>Ready to price your bathroom? Get a free, no-obligation Mixx quote.</p>
+  <div class="blog-inline-cta__buttons">
+    <a class="btn-primary" href="/#contact">Get a quote</a>
+    <a class="btn-secondary btn-whatsapp" href="https://wa.me/254705697163?text=Hello%20Pavilion%20Master%20Builders%2C%20I%27d%20like%20a%20quote%20for%20a%20Mixx%20Cement%20bathroom." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp us</a>
+  </div>
+</div>
+
+## Related reading
+
+- [What Is Mixx Cement? Kenya's New Decorative Micro-Cement Finish, Explained](/blog/what-is-mixx-cement/)
+- [Mixx Cement: finishes, colours, sealers and application guide](/products/mixx-cement/)

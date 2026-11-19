@@ -1994,6 +1994,22 @@ a.btn-primary, a.btn-secondary { display: inline-block; text-decoration: none; }
     border-radius: 30px; border: 1px solid rgba(26, 38, 52, 0.08);
 }
 .blog-post-cta h2 { font-size: 1.6rem; margin-bottom: 0.7rem; }
+
+/* Quote / WhatsApp buttons placed inside a post's Markdown as raw HTML. */
+.blog-post-body .blog-inline-cta {
+    margin: 2.5rem 0; padding: 1.6rem 1.5rem; text-align: center;
+    background: var(--surface); border-radius: 24px;
+    border: 1px solid rgba(26, 38, 52, 0.08);
+}
+.blog-post-body .blog-inline-cta p { margin: 0 0 1.1rem; font-weight: 500; }
+.blog-inline-cta__buttons { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+.blog-post-body .blog-inline-cta a { text-decoration: none; }
+.blog-post-body .blog-inline-cta a.btn-primary { color: #fff; }
+.blog-post-body .blog-inline-cta a.btn-whatsapp { color: #1a7f45; border-color: #25d366; }
+.blog-post-body .blog-inline-cta a.btn-whatsapp:hover { background: rgba(37, 211, 102, 0.1); }
+@media (max-width: 600px) {
+    .blog-inline-cta__buttons a { width: 100%; text-align: center; }
+}
 .blog-post-cta p { color: var(--text-light); margin-bottom: 1.6rem; }
 
 @media (max-width: 900px) {

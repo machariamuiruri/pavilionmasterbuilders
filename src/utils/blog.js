@@ -27,6 +27,7 @@ export const stripMarkdown = (md) =>
   squash(
     md
       .replace(/<!--[\s\S]*?-->/g, ' ')
+      .replace(/<[^>]+>/g, ' ') // raw HTML in a post, e.g. inline CTA buttons
       .replace(/```[\s\S]*?```/g, ' ')
       .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
       .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
@@ -46,7 +47,9 @@ const FAQ_HEADING = /^##\s+(frequently asked questions|faqs?)\s*$/i;
 
 export const faqsOf = (body) => {
   // Fenced code can contain lines that look like headings; blank it out first.
-  const lines = body.replace(/```[\s\S]*?```/g, '').split('\n');
+  // Split on \r?\n: a Windows checkout has CRLF endings, and a trailing \r
+  // stops `(.+)$` matching, which silently dropped every question.
+  const lines = body.replace(/```[\s\S]*?```/g, '').split(/\r?\n/);
   const start = lines.findIndex((line) => FAQ_HEADING.test(line.trim()));
   if (start === -1) return [];
 

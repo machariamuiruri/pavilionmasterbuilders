@@ -5,6 +5,7 @@ title: "What Is Mixx Cement? Kenya's New Decorative Micro-Cement Finish, Explain
 seoTitle: "What Is Mixx Cement? Kenya's Micro-Cement Finish"
 description: "Mixx Cement is a decorative micro-cement coating now available in Kenya through Pavilion Master Builders. Here's what it is, how it's applied, and where it works best."
 pubDate: 2026-08-30
+updatedDate: 2026-11-19
 category: "Finishes"
 tags: ["mixx cement", "micro-cement", "decorative finishes"]
 heroImage: "/assets/mixx-cement/applications/application-01.jpeg"
@@ -24,6 +25,14 @@ years later.
 That cycle is what Mixx Cement is designed to interrupt: a decorative micro-cement coating
 now available in Kenya through Pavilion Master Builders, which launched it in Nairobi in
 May 2026 alongside the South African manufacturer behind it.
+
+<div class="blog-inline-cta">
+  <p>Already have a surface in mind? Send us a photo and rough measurements.</p>
+  <div class="blog-inline-cta__buttons">
+    <a class="btn-primary" href="/#contact">Get a Mixx quote</a>
+    <a class="btn-secondary btn-whatsapp" href="https://wa.me/254705697163?text=Hello%20Pavilion%20Master%20Builders%2C%20I%27d%20like%20a%20quote%20for%20Mixx%20Cement." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp us</a>
+  </div>
+</div>
 
 ## What Is Mixx Cement?
 
@@ -92,10 +101,22 @@ language outdoors: facades, patios, and outdoor entertainment areas can carry th
 used inside. For a project trying to hold one material story from the living room through
 to the terrace, that continuity is difficult to achieve any other way.
 
-There is also a designer colour range, so the finish is not restricted to grey — the
-concrete look is a starting point, not the only destination.
+There is also a [designer colour range](/products/mixx-cement/) of 24 colours, so the
+finish is not restricted to grey — the concrete look is a starting point, not the only
+destination.
 
 ![A bathroom finished in Mixx Cement — walls, floor and shower in one continuous micro-cement surface with no tiles or grout lines](/assets/mixx-cement/applications/application-09.jpeg)
+
+To see what this looks like on a real job, read how we took a
+[bare-plaster bathroom in Almasi Woods to a seamless shower room in four days](/blog/almasi-woods-shower-room-mixx-cement/).
+
+<div class="blog-inline-cta">
+  <p>Thinking about a bathroom, kitchen or floor? We'll tell you what it would take.</p>
+  <div class="blog-inline-cta__buttons">
+    <a class="btn-primary" href="/#contact">Request a quote</a>
+    <a class="btn-secondary btn-whatsapp" href="https://wa.me/254705697163?text=Hello%20Pavilion%20Master%20Builders%2C%20I%27d%20like%20a%20quote%20for%20Mixx%20Cement." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp</a>
+  </div>
+</div>
 
 ## Why It Holds Up Better Than Paint or Tile
 
@@ -132,6 +153,38 @@ Pavilion supplies it alongside training and technical support, which for an appl
 is not a detail — micro-cement is only as good as the hand that lays it on. A product like
 this fails through poor application far more often than through poor formulation.
 
+## Frequently asked questions
+
+### How much does Mixx Cement cost per m²?
+
+It depends on the surface, its condition, the finish you choose and whether it is a wet
+area that needs the extra Supreme Seal coat. As a guide to material use, one 12.5kg bag of
+Mixx plaster with 5 litres of Neutral Binder covers about 17.5 m² at the standard two
+coats. Because Mixx goes over existing tiles, there is usually no demolition or rubble
+removal to pay for. For an accurate price per square metre, send us photos and rough
+measurements and we will quote for your surfaces.
+
+### Does Mixx Cement crack?
+
+Mixx is applied in thin coats with Neutral Binder, which improves its flexural strength
+and limits shrinkage as it dries. Like any cement-based finish, though, it follows what is
+underneath it. If the plaster or tiles below are cracked, loose or moving, those cracks
+must be repaired before application. That is why surface preparation and an experienced
+installer matter as much as the product.
+
+### How durable is Mixx Cement?
+
+Very durable when it is sealed for the job. Walls are sealed with Silly Seal, floors with
+the tougher Serious Seal, and showers and other wet areas get an extra coat of Supreme
+Seal. The sealer takes the day-to-day wear, and with no grout lines there are no joints to
+stain, crack or come loose.
+
+### How do you clean Mixx Cement?
+
+Wipe it with warm water and a mild, pH-neutral cleaner using a soft cloth or mop. Avoid
+scouring pads, abrasive powders and strong acidic or bleach-based cleaners, because they
+wear down the sealer over time.
+
 ## See It in Person
 
 Photographs of micro-cement are genuinely misleading. The texture, the depth and the way
@@ -146,6 +199,18 @@ If you are weighing it against repainting or re-tiling, that comparison takes te
 in person and will tell you more than any specification sheet.
 
 [Explore the full Mixx Cement range](/products/mixx-cement/) — the finishes, the colour
-options, the sealers and the application guide — or
-[get in touch for a quote](/#contact) and we will talk through what it would take on your
-particular surfaces.
+options, the sealers and the application guide — or get in touch and we will talk through
+what it would take on your particular surfaces.
+
+<div class="blog-inline-cta">
+  <p>Ready to price your project? Get a free, no-obligation Mixx quote.</p>
+  <div class="blog-inline-cta__buttons">
+    <a class="btn-primary" href="/#contact">Get a quote</a>
+    <a class="btn-secondary btn-whatsapp" href="https://wa.me/254705697163?text=Hello%20Pavilion%20Master%20Builders%2C%20I%27d%20like%20a%20quote%20for%20Mixx%20Cement." target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp us</a>
+  </div>
+</div>
+
+## Related reading
+
+- [From Bare Plaster to Seamless Shower Room in Four Days: A Mixx Cement Project in Almasi Woods](/blog/almasi-woods-shower-room-mixx-cement/)
+- [Mixx Cement: finishes, colours, sealers and application guide](/products/mixx-cement/)
