@@ -100,6 +100,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data.success) {
                         status.textContent = 'Thank you! Your message has been sent — our team will be in touch shortly.';
                         status.className = 'form-status success show';
+                        // GA4 lead conversion — read the select before reset() clears it
+                        if (typeof gtag === 'function') {
+                            var interest = form.querySelector('select');
+                            gtag('event', 'generate_lead', {
+                                form_name: 'enquiry',
+                                product_interest: interest ? interest.value : ''
+                            });
+                        }
                         form.reset();
                     } else {
                         status.textContent = data.message || 'Something went wrong. Please try again or call us directly.';
