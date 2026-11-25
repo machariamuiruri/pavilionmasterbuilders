@@ -122,6 +122,17 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
+        // GA4 phone/email click tracking. One delegated listener covers every
+        // tel:/mailto: link on the page, including ones inside blog posts.
+        document.addEventListener('click', function (e) {
+            if (typeof gtag !== 'function') return;
+            var link = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+            if (!link) return;
+            var href = link.getAttribute('href');
+            var name = href.indexOf('tel:') === 0 ? 'phone_click' : 'email_click';
+            gtag('event', name, { link_url: href });
+        });
+
         // ---- Image lightbox ------------------------------------------------
         // Click any content photo to view it full size.
         //
